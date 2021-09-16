@@ -9,7 +9,7 @@ namespace eLibrary.Models
     {
         public Promocija()
         {
-            KnjigaPromocijas = new HashSet<KnjigaPromocija>();
+            KnjigaPromocija = new HashSet<KnjigaPromocija>();
         }
 
         public int PromocijaId { get; set; }
@@ -19,6 +19,6 @@ namespace eLibrary.Models
         public int? KnjigaId { get; set; }
 
         public virtual Knjiga Knjiga { get; set; }
-        public virtual ICollection<KnjigaPromocija> KnjigaPromocijas { get; set; }
+        public virtual ICollection<KnjigaPromocija> KnjigaPromocija { get; set; }
     }
 }

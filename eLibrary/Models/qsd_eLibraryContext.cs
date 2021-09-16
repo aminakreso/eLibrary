@@ -88,12 +88,12 @@ namespace eLibrary.Models
                 entity.Property(e => e.VrijemeZaprimanjaZahtjeva).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Knjiga)
-                    .WithMany(p => p.CekanjeNaKnjigus)
+                    .WithMany(p => p.CekanjeNaKnjigu)
                     .HasForeignKey(d => d.KnjigaId)
                     .HasConstraintName("FK_CekanjeNaKnjiguKnjiga");
 
                 entity.HasOne(d => d.Korisnik)
-                    .WithMany(p => p.CekanjeNaKnjigus)
+                    .WithMany(p => p.CekanjeNaKnjigu)
                     .HasForeignKey(d => d.KorisnikId)
                     .HasConstraintName("FK_CekanjeNaKnjiguKorisnik");
             });
@@ -109,7 +109,7 @@ namespace eLibrary.Models
                 entity.Property(e => e.KorisnikId).HasColumnName("KorisnikID");
 
                 entity.HasOne(d => d.Korisnik)
-                    .WithMany(p => p.ClanskaKarticas)
+                    .WithMany(p => p.ClanskaKartica)
                     .HasForeignKey(d => d.KorisnikId)
                     .HasConstraintName("FK_ClanskaKarticaKorisnik");
             });
@@ -159,12 +159,12 @@ namespace eLibrary.Models
                 entity.Property(e => e.PromocijaId).HasColumnName("PromocijaID");
 
                 entity.HasOne(d => d.Knjiga)
-                    .WithMany(p => p.KnjigaPromocijas)
+                    .WithMany(p => p.KnjigaPromocija)
                     .HasForeignKey(d => d.KnjigaId)
                     .HasConstraintName("FK_KnjigaPromocijaKnjiga");
 
                 entity.HasOne(d => d.Promocija)
-                    .WithMany(p => p.KnjigaPromocijas)
+                    .WithMany(p => p.KnjigaPromocija)
                     .HasForeignKey(d => d.PromocijaId)
                     .HasConstraintName("FK_KnjigaPromocijaPromocija");
             });
@@ -231,7 +231,7 @@ namespace eLibrary.Models
                     .HasColumnName("VaziDO");
 
                 entity.HasOne(d => d.Korisnik)
-                    .WithMany(p => p.Kupons)
+                    .WithMany(p => p.Kupon)
                     .HasForeignKey(d => d.KorisnikId)
                     .HasConstraintName("FK_KuponKorisnik");
             });
@@ -251,12 +251,12 @@ namespace eLibrary.Models
                 entity.Property(e => e.KuponId).HasColumnName("KuponID");
 
                 entity.HasOne(d => d.Knjiga)
-                    .WithMany(p => p.Narudzbas)
+                    .WithMany(p => p.Narudzba)
                     .HasForeignKey(d => d.KnjigaId)
                     .HasConstraintName("FK_NarudzbaKnjiga");
 
                 entity.HasOne(d => d.Korisnik)
-                    .WithMany(p => p.Narudzbas)
+                    .WithMany(p => p.Narudzba)
                     .HasForeignKey(d => d.KorisnikId)
                     .HasConstraintName("FK_NarudzbaKorisnik");
 
@@ -289,12 +289,12 @@ namespace eLibrary.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Knjiga)
-                    .WithMany(p => p.Notifikacijas)
+                    .WithMany(p => p.Notifikacija)
                     .HasForeignKey(d => d.KnjigaId)
                     .HasConstraintName("FK_NotifikacijaKnjiga");
 
                 entity.HasOne(d => d.Korisnik)
-                    .WithMany(p => p.Notifikacijas)
+                    .WithMany(p => p.Notifikacija)
                     .HasForeignKey(d => d.KorisnikId)
                     .HasConstraintName("FK_NotifikacijaKorisnik");
 
@@ -340,7 +340,7 @@ namespace eLibrary.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Knjiga)
-                    .WithMany(p => p.Promocijas)
+                    .WithMany(p => p.Promocija)
                     .HasForeignKey(d => d.KnjigaId)
                     .HasConstraintName("FK_PromocijaKnjiga");
             });

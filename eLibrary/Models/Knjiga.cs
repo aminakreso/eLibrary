@@ -9,11 +9,11 @@ namespace eLibrary.Models
     {
         public Knjiga()
         {
-            CekanjeNaKnjigus = new HashSet<CekanjeNaKnjigu>();
-            KnjigaPromocijas = new HashSet<KnjigaPromocija>();
-            Narudzbas = new HashSet<Narudzba>();
-            Notifikacijas = new HashSet<Notifikacija>();
-            Promocijas = new HashSet<Promocija>();
+            CekanjeNaKnjigu = new HashSet<CekanjeNaKnjigu>();
+            KnjigaPromocija = new HashSet<KnjigaPromocija>();
+            Narudzba = new HashSet<Narudzba>();
+            Notifikacija = new HashSet<Notifikacija>();
+            Promocija = new HashSet<Promocija>();
         }
 
         public int KnjigaId { get; set; }
@@ -27,10 +27,10 @@ namespace eLibrary.Models
 
         public virtual Pisac Pisac { get; set; }
         public virtual Zanr Zanr { get; set; }
-        public virtual ICollection<CekanjeNaKnjigu> CekanjeNaKnjigus { get; set; }
-        public virtual ICollection<KnjigaPromocija> KnjigaPromocijas { get; set; }
-        public virtual ICollection<Narudzba> Narudzbas { get; set; }
-        public virtual ICollection<Notifikacija> Notifikacijas { get; set; }
-        public virtual ICollection<Promocija> Promocijas { get; set; }
+        public virtual ICollection<CekanjeNaKnjigu> CekanjeNaKnjigu { get; set; }
+        public virtual ICollection<KnjigaPromocija> KnjigaPromocija { get; set; }
+        public virtual ICollection<Narudzba> Narudzba { get; set; }
+        public virtual ICollection<Notifikacija> Notifikacija { get; set; }
+        public virtual ICollection<Promocija> Promocija { get; set; }
     }
 }
