@@ -9,8 +9,8 @@ namespace eLibrary.Models
     {
         public KorisnickiRacun()
         {
-            Admins = new HashSet<Admin>();
-            Korisniks = new HashSet<Korisnik>();
+            Admin = new HashSet<Admin>();
+            Korisnik = new HashSet<Korisnik>();
         }
 
         public int KorisnickiRacunId { get; set; }
@@ -18,7 +18,7 @@ namespace eLibrary.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public virtual ICollection<Admin> Admins { get; set; }
-        public virtual ICollection<Korisnik> Korisniks { get; set; }
+        public virtual ICollection<Admin> Admin { get; set; }
+        public virtual ICollection<Korisnik> Korisnik { get; set; }
     }
 }

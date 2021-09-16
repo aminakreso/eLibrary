@@ -9,13 +9,13 @@ namespace eLibrary.Models
     {
         public Zanr()
         {
-            Knjigas = new HashSet<Knjiga>();
+            Knjiga = new HashSet<Knjiga>();
         }
 
         public int ZanrId { get; set; }
         public string Naziv { get; set; }
         public int? BrojKnjigaNaStanju { get; set; }
 
-        public virtual ICollection<Knjiga> Knjigas { get; set; }
+        public virtual ICollection<Knjiga> Knjiga { get; set; }
     }
 }

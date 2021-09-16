@@ -9,7 +9,7 @@ namespace eLibrary.Models
     {
         public Kupon()
         {
-            Narudzbas = new HashSet<Narudzba>();
+            Narudzba = new HashSet<Narudzba>();
         }
 
         public int KuponId { get; set; }
@@ -19,6 +19,6 @@ namespace eLibrary.Models
         public int? KorisnikId { get; set; }
 
         public virtual Korisnik Korisnik { get; set; }
-        public virtual ICollection<Narudzba> Narudzbas { get; set; }
+        public virtual ICollection<Narudzba> Narudzba { get; set; }
     }
 }

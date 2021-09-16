@@ -65,7 +65,7 @@ namespace eLibrary.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.KorisnickiRacun)
-                    .WithMany(p => p.Admins)
+                    .WithMany(p => p.Admin)
                     .HasForeignKey(d => d.KorisnickiRacunId)
                     .HasConstraintName("FK_AdminKorisnickiRacun");
             });
@@ -134,12 +134,12 @@ namespace eLibrary.Models
                 entity.Property(e => e.ZanrId).HasColumnName("ZanrID");
 
                 entity.HasOne(d => d.Pisac)
-                    .WithMany(p => p.Knjigas)
+                    .WithMany(p => p.Knjiga)
                     .HasForeignKey(d => d.PisacId)
                     .HasConstraintName("FK_KnjigaPisac");
 
                 entity.HasOne(d => d.Zanr)
-                    .WithMany(p => p.Knjigas)
+                    .WithMany(p => p.Knjiga)
                     .HasForeignKey(d => d.ZanrId)
                     .HasConstraintName("FK_KnjigaZanr");
             });
@@ -209,7 +209,7 @@ namespace eLibrary.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.KorisnickiRacun)
-                    .WithMany(p => p.Korisniks)
+                    .WithMany(p => p.Korisnik)
                     .HasForeignKey(d => d.KorisnickiRacunId)
                     .HasConstraintName("FK_KorisnikKorisnickiRacun");
             });
@@ -261,7 +261,7 @@ namespace eLibrary.Models
                     .HasConstraintName("FK_NarudzbaKorisnik");
 
                 entity.HasOne(d => d.Kupon)
-                    .WithMany(p => p.Narudzbas)
+                    .WithMany(p => p.Narudzba)
                     .HasForeignKey(d => d.KuponId)
                     .HasConstraintName("FK_NarudzbaKupon");
             });
@@ -299,7 +299,7 @@ namespace eLibrary.Models
                     .HasConstraintName("FK_NotifikacijaKorisnik");
 
                 entity.HasOne(d => d.Pisac)
-                    .WithMany(p => p.Notifikacijas)
+                    .WithMany(p => p.Notifikacija)
                     .HasForeignKey(d => d.PisacId)
                     .HasConstraintName("FK_NotifikacijaPisac");
             });
