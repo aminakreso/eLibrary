@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace eLibrary.Models
 {
-    public partial class Uplatum
+    public partial class Uplata
     {
         public int UplataId { get; set; }
         public double? VisinaUplate { get; set; }

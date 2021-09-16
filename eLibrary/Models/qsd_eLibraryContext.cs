@@ -17,27 +17,26 @@ namespace eLibrary.Models
         {
         }
 
-        public virtual DbSet<Admin> Admins { get; set; }
-        public virtual DbSet<CekanjeNaKnjigu> CekanjeNaKnjigus { get; set; }
-        public virtual DbSet<ClanskaKartica> ClanskaKarticas { get; set; }
-        public virtual DbSet<Knjiga> Knjigas { get; set; }
-        public virtual DbSet<KnjigaPromocija> KnjigaPromocijas { get; set; }
-        public virtual DbSet<KorisnickiRacun> KorisnickiRacuns { get; set; }
-        public virtual DbSet<Korisnik> Korisniks { get; set; }
-        public virtual DbSet<Kupon> Kupons { get; set; }
-        public virtual DbSet<Narudzba> Narudzbas { get; set; }
-        public virtual DbSet<Notifikacija> Notifikacijas { get; set; }
-        public virtual DbSet<Pisac> Pisacs { get; set; }
-        public virtual DbSet<Promocija> Promocijas { get; set; }
-        public virtual DbSet<Uplatum> Uplata { get; set; }
-        public virtual DbSet<Zanr> Zanrs { get; set; }
+        public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<CekanjeNaKnjigu> CekanjeNaKnjigu { get; set; }
+        public virtual DbSet<ClanskaKartica> ClanskaKartica { get; set; }
+        public virtual DbSet<Knjiga> Knjiga { get; set; }
+        public virtual DbSet<KnjigaPromocija> KnjigaPromocija { get; set; }
+        public virtual DbSet<KorisnickiRacun> KorisnickiRacun { get; set; }
+        public virtual DbSet<Korisnik> Korisnik { get; set; }
+        public virtual DbSet<Kupon> Kupon { get; set; }
+        public virtual DbSet<Narudzba> Narudzba { get; set; }
+        public virtual DbSet<Notifikacija> Notifikacija { get; set; }
+        public virtual DbSet<Pisac> Pisac { get; set; }
+        public virtual DbSet<Promocija> Promocija { get; set; }
+        public virtual DbSet<Uplata> Uplata { get; set; }
+        public virtual DbSet<Zanr> Zanr { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.;Database=qsd_eLibrary;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Name=eLibraryDB");
             }
         }
 
@@ -346,7 +345,7 @@ namespace eLibrary.Models
                     .HasConstraintName("FK_PromocijaKnjiga");
             });
 
-            modelBuilder.Entity<Uplatum>(entity =>
+            modelBuilder.Entity<Uplata>(entity =>
             {
                 entity.HasKey(e => e.UplataId)
                     .HasName("PK__Uplata__C5B16586F0D94906");

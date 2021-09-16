@@ -14,7 +14,7 @@ namespace eLibrary.Models
             Kupons = new HashSet<Kupon>();
             Narudzbas = new HashSet<Narudzba>();
             Notifikacijas = new HashSet<Notifikacija>();
-            Uplata = new HashSet<Uplatum>();
+            Uplata = new HashSet<Uplata>();
         }
 
         public int KorisnikId { get; set; }
@@ -29,6 +29,6 @@ namespace eLibrary.Models
         public virtual ICollection<Kupon> Kupons { get; set; }
         public virtual ICollection<Narudzba> Narudzbas { get; set; }
         public virtual ICollection<Notifikacija> Notifikacijas { get; set; }
-        public virtual ICollection<Uplatum> Uplata { get; set; }
+        public virtual ICollection<Uplata> Uplata { get; set; }
     }
 }
