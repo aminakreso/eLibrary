@@ -31,12 +31,11 @@ namespace eLibrary.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Knjiga>> GetKnjiga(int id)
         {
-            var knjiga = await _context.Knjiga.FindAsync(id);
 
-            if (knjiga == null)
-            {
-                return NotFound();
-            }
+            var knjiga = await _context.Knjiga
+                                           .Include(k => k.Zanr)
+                                           .Where(k => k.KnjigaId== id)
+                                           .FirstOrDefaultAsync();
 
             return knjiga;
         }

@@ -41,6 +41,39 @@ namespace eLibrary.Controllers
             return pisac;
         }
 
+        [HttpGet("GetPisacDetails/{id}")]
+        public async Task<ActionResult<Pisac>> GetPisacDetails(int id)
+        {
+            //Eager Loading
+            var pisac = await _context.Pisac
+                                            .Include(p => p.Knjiga)
+                                                .ThenInclude(k=>k.Zanr)
+                                            .Where(p => p.PisacId == id)
+                                            .FirstOrDefaultAsync();
+
+            //Explicit Loading
+            //var publisher = await _context.Publishers.SingleAsync(pub => pub.PubId == Convert.ToInt32(PublisherId));
+
+            //_context.Entry(publisher)
+            //        .Collection(pub => pub.Users)
+            //        .Query()
+            //        .Where(usr => usr.EmailAddress.Contains("karin"))
+            //        .Load();
+
+            //_context.Entry(publisher)
+            //        .Collection(pub => pub.Books)
+            //        .Query()
+            //        .Include(book => book.Sales)
+            //        .Load();
+
+            if (pisac == null)
+            {
+                return NotFound();
+            }
+
+            return pisac;
+        }
+
         // PUT: api/Pisac/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
