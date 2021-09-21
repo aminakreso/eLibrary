@@ -31,12 +31,27 @@ namespace eLibrary.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Zanr>> GetZanr(int id)
         {
-            var zanr = await _context.Zanr.FindAsync(id);
+            //var zanr = await _context.Zanr.FindAsync(id);
 
-            if (zanr == null)
-            {
-                return NotFound();
-            }
+            //if (zanr == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //Explicit Loading
+            var zanr = await _context.Zanr.SingleAsync(z => z.ZanrId == id);
+
+            var knjiga = new Knjiga();
+            knjiga.NazivKnjige = "filter";
+
+            //zanr.Knjiga.Add(knjiga);
+            //_context.SaveChanges();
+
+            _context.Entry(zanr)
+                    .Collection(z => z.Knjiga)
+                    //.Query()
+                    //.Where(k => k.NazivKnjige.Contains("filter"))
+                    .Load();
 
             return zanr;
         }

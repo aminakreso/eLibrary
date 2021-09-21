@@ -51,20 +51,6 @@ namespace eLibrary.Controllers
                                             .Where(p => p.PisacId == id)
                                             .FirstOrDefaultAsync();
 
-            //Explicit Loading
-            //var publisher = await _context.Publishers.SingleAsync(pub => pub.PubId == Convert.ToInt32(PublisherId));
-
-            //_context.Entry(publisher)
-            //        .Collection(pub => pub.Users)
-            //        .Query()
-            //        .Where(usr => usr.EmailAddress.Contains("karin"))
-            //        .Load();
-
-            //_context.Entry(publisher)
-            //        .Collection(pub => pub.Books)
-            //        .Query()
-            //        .Include(book => book.Sales)
-            //        .Load();
 
             if (pisac == null)
             {
@@ -72,6 +58,41 @@ namespace eLibrary.Controllers
             }
 
             return pisac;
+        }
+        [HttpGet("PostPisacDetails")]
+        public async Task<ActionResult<Pisac>> PostPisacDetails() 
+        {
+
+            var pisac = new Pisac();
+            pisac.Ime = "Pisac";
+            pisac.Prezime = "Test";
+
+            var knjiga = new Knjiga();
+            knjiga.NazivKnjige = "Knjiga1";
+            knjiga.Cijena = 5.5;
+
+            var zanr = new Zanr();
+            zanr.Naziv = "Test";
+
+            knjiga.Zanr = zanr;
+            pisac.Knjiga.Add(knjiga);
+
+            _context.Pisac.Add(pisac);
+            _context.SaveChanges();
+
+            var pisci = await _context.Pisac
+                                             .Include(p => p.Knjiga)
+                                                 .ThenInclude(k => k.Zanr)
+                                             .Where(p => p.PisacId == pisac.PisacId)
+                                             .FirstOrDefaultAsync();
+
+
+            if (pisci == null)
+            {
+                return NotFound();
+            }
+
+            return pisci;
         }
 
         // PUT: api/Pisac/5
