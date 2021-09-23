@@ -1,0 +1,55 @@
+<html>
+    <head>
+        
+        <!-- meta tags -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+       
+    </head>
+    <body>
+        <h1>eKnjizara </h1>
+        <div class="login-form">
+            <h2>One-Time Password Login</h2>
+            <form  id="form">
+
+                <div class="form-group">
+                    <label>Clanska karta ID: </label>
+                    <div>
+                        <input id="username" name="username" class="form-control" autocomplete="off" required />
+                        <i class="validation"><span></span><span></span></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>One-Time Password: </label>
+                    <div>
+                        <input id="password" name="password" class="form-control" type="password" autocomplete="off"  required/>
+                        <i class="validation"><span></span><span></span></i>
+                    </div>
+                </div>
+
+                <br />
+                
+                    <input type="checkbox" />   Zapamti lozinku
+                
+                <br /><br />
+
+                <input type="submit" class="form-control btn btn-primary"value="Login" [routerLink]="['/reset-pass']" routerLinkActive="router-link-active" />
+                
+
+                
+
+            </form>
+            
+            <p class="prijava-p">
+                Imate korisnicki nalog?<a [routerLink]="['/user-login']" routerLinkActive="router-link-active" class="prijava">Prijavite se ovdje</a>
+
+            </p>
+        </div>
+        
+    
+    </body>
+
+</html>
+

@@ -1,0 +1,43 @@
+<html>
+    <head>
+        
+        <!-- meta tags -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+       
+    </head>
+    <body>
+        <h1>eKnjizara </h1>
+        <div class="login-form">
+            <h2>Reset lozinke</h2>
+            <form  id="form">
+
+                
+                <div class="form-group">
+                    <label>Email: </label>
+                    <div>
+                        <input id="email" name="email" class="form-control" type="text" autocomplete="off"  required/>
+                        <i class="validation"><span></span><span></span></i>
+                    </div>
+                </div>
+
+                
+
+
+                
+                <input type="submit" class="form-control btn btn-primary" value="Posalji zahtjev za promjenu lozinke"   />
+                <p class="prijava-p">
+                    Imate korisnicki nalog?<a [routerLink]="['/user-login']" routerLinkActive="router-link-active" class="prijava">Prijavite se ovdje</a>
+    
+                </p>
+
+            </form>
+            
+        </div>
+        
+    
+    </body>
+
+</html>
+

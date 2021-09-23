@@ -1,0 +1,53 @@
+<html>
+    <head>
+        
+        <!-- meta tags -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+       
+    </head>
+    <body>
+        <h1>eKnjizara </h1>
+        <div class="login-form">
+            <h2>Login</h2>
+            <form  id="form">
+
+                <div class="form-group">
+                    <label>Clanska karta ID: </label>
+                    <div>
+                        <input id="username" name="username" class="form-control" autocomplete="off" required />
+                        <i class="validation"><span></span><span></span></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Password: </label>
+                    <div>
+                        <input id="password" name="password" class="form-control" type="password" autocomplete="off"  required/>
+                        <i class="validation"><span></span><span></span></i>
+                    </div>
+                </div>
+
+                <br />
+                
+                    <input type="checkbox" />   Zapamti lozinku
+                
+                <br /><br />
+
+                <input type="submit" class="form-control btn btn-primary" value="Login" />
+
+
+            </form>
+            
+            <p class="prijava-p">
+                Zaboravili ste lozinku?<a href="#" class="prijava" [routerLink]="['/reset-pass-user']" routerLinkActive="router-link-active">Reset lozinke</a>
+
+            </p>
+        </div>
+        
+    
+    </body>
+
+</html>
+
