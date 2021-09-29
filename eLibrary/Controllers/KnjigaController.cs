@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eLibrary.Models;
+using eLibrary.ActionFilters;
 
 namespace eLibrary.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class KnjigaController : ControllerBase
+    public class KnjigaController : ControllerBase 
     {
         private readonly qsd_eLibraryContext _context;
 
@@ -43,6 +44,7 @@ namespace eLibrary.Controllers
         // PUT: api/Knjiga/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> PutKnjiga(int id, Knjiga knjiga)
         {
             if (id != knjiga.KnjigaId)
@@ -51,22 +53,23 @@ namespace eLibrary.Controllers
             }
 
             _context.Entry(knjiga).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!KnjigaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _context.SaveChanges();
+            
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!KnjigaExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
             return NoContent();
         }
@@ -74,6 +77,8 @@ namespace eLibrary.Controllers
         // POST: api/Knjiga
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+
         public async Task<ActionResult<Knjiga>> PostKnjiga(Knjiga knjiga)
         {
             _context.Knjiga.Add(knjiga);

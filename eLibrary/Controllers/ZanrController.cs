@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eLibrary.Models;
+using eLibrary.ActionFilters;
 
 namespace eLibrary.Controllers
 {
@@ -59,6 +60,8 @@ namespace eLibrary.Controllers
         // PUT: api/Zanr/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+
         public async Task<IActionResult> PutZanr(int id, Zanr zanr)
         {
             if (id != zanr.ZanrId)
@@ -67,22 +70,7 @@ namespace eLibrary.Controllers
             }
 
             _context.Entry(zanr).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ZanrExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _context.SaveChanges();
 
             return NoContent();
         }
@@ -90,6 +78,8 @@ namespace eLibrary.Controllers
         // POST: api/Zanr
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+
         public async Task<ActionResult<Zanr>> PostZanr(Zanr zanr)
         {
             _context.Zanr.Add(zanr);

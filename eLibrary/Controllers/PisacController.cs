@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eLibrary.Models;
+using eLibrary.ActionFilters;
 
 namespace eLibrary.Controllers
 {
@@ -98,6 +99,8 @@ namespace eLibrary.Controllers
         // PUT: api/Pisac/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+
         public async Task<IActionResult> PutPisac(int id, Pisac pisac)
         {
             if (id != pisac.PisacId)
@@ -106,22 +109,8 @@ namespace eLibrary.Controllers
             }
 
             _context.Entry(pisac).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PisacExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _context.SaveChanges();
+           
 
             return NoContent();
         }
@@ -129,6 +118,8 @@ namespace eLibrary.Controllers
         // POST: api/Pisac
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+
         public async Task<ActionResult<Pisac>> PostPisac(Pisac pisac)
         {
             _context.Pisac.Add(pisac);

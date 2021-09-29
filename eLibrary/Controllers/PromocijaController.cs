@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eLibrary.Models;
+using eLibrary.ActionFilters;
 
 namespace eLibrary.Controllers
 {
@@ -44,6 +45,8 @@ namespace eLibrary.Controllers
         // PUT: api/Promocija/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+
         public async Task<IActionResult> PutPromocija(int id, Promocija promocija)
         {
             if (id != promocija.PromocijaId)
@@ -52,29 +55,16 @@ namespace eLibrary.Controllers
             }
 
             _context.Entry(promocija).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PromocijaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            _context.SaveChanges();
+          
             return NoContent();
         }
 
         // POST: api/Promocija
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+
         public async Task<ActionResult<Promocija>> PostPromocija(Promocija promocija)
         {
             _context.Promocija.Add(promocija);

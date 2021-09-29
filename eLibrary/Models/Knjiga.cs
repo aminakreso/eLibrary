@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
 
 namespace eLibrary.Models
 {
-    public partial class Knjiga
+    public partial class Knjiga 
     {
         public Knjiga()
         {
@@ -32,5 +33,6 @@ namespace eLibrary.Models
         public virtual ICollection<Narudzba> Narudzba { get; set; }
         public virtual ICollection<Notifikacija> Notifikacija { get; set; }
         public virtual ICollection<Promocija> Promocija { get; set; }
+        
     }
 }
