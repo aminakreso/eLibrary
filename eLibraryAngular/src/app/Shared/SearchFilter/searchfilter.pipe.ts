@@ -1,20 +1,34 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Knjiga } from '../knjiga/knjiga.model'; 
+import { Knjiga } from '../knjiga/knjiga.model';
+import { Promocija } from '../promocija/promocija.model';
 @Pipe({
   name: 'searchfilter'
 })
 export class SearchfilterPipe implements PipeTransform {
 
-  transform(Knjiga: Knjiga[],searchValue:string): any {
-    if(!Knjiga||!searchValue)
+  transform(item :any[],searchValue:string): any {
+    
+    
+    if(!item||!searchValue)
     {
-      return Knjiga;
+      return item;
     }
-    return Knjiga.filter(knjiga=>
-      knjiga.nazivKnjige.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())||
-      knjiga.pisacId.toString().toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())||
-      knjiga.zanrId.toString().toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
+    else
+    {
+    return item.filter(items=>
       
+      items.nazivKnjige.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())||
+      items.pisacId.toString().toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())||
+      items.zanrId.toString().toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
+      
+    
+    }
   }
-
 }
+
+
+  
+
+  
+
+

@@ -4,6 +4,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { OneTimeLoginComponent } from './one-time-login/one-time-login.component';
 import { ResetPassComponent } from './one-time-login/reset-pass/reset-pass.component';
 import { ResetPassUserComponent } from './user-login/reset-pass-user/reset-pass-user.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ResetPassAdminComponent } from './admin-login/reset-pass-admin/reset-pass-admin.component';
 
 const routes: Routes = [
   { path: '',  redirectTo: 'one-time-login', pathMatch: 'full' },
@@ -16,12 +18,21 @@ const routes: Routes = [
     component: UserLoginComponent
   },
   {
+  path: 'admin-login',
+  component: AdminLoginComponent
+  },
+
+  {
     path: 'reset-pass',
     component: ResetPassComponent
   },
   {
     path: 'reset-pass-user',
     component: ResetPassUserComponent
+  },
+  {
+    path: 'reset-pass-admin',
+    component: ResetPassAdminComponent
   },
 ];
 

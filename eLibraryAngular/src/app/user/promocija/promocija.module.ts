@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { KnjigaRoutingModule } from './knjiga-routing.module';
+import { PromocijaRoutingModule } from './promocija-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    KnjigaRoutingModule
+    PromocijaRoutingModule
   ]
 })
-export class KnjigaModule {}
+export class PromocijaModule {}
  

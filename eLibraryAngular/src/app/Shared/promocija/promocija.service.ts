@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Knjiga } from './knjiga.model';
+import { Promocija } from './promocija.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class KnjigaService {
+export class PromocijaService {
 
-  url='https://localhost:44314/api/knjiga'
+  url='https://localhost:44314/api/promocija'
   constructor(private http: HttpClient) { }
   
   
   
-  getAllKnjiga():Observable<Knjiga[]>{
-    return this.http.get<Knjiga[]>(this.url);
+  getAllPromocija():Observable<Promocija[]>{
+    return this.http.get<Promocija[]>(this.url);
   }
   
  
