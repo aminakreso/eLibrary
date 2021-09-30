@@ -18,10 +18,17 @@ export class KnjigeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getKnjiga();
+    
   }
   getKnjiga(): void {
     this.knjigaService.getAllKnjiga()
         .subscribe(books => this.listKnjiga = books);
+  }
+  
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
 
 }

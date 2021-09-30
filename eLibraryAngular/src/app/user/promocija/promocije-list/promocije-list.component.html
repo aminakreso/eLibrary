@@ -1,0 +1,32 @@
+<div class="form-group row"></div>
+<div class="form-group row">
+    <label for="search" class="col-sm-2 col-form-label" style="text-align: right;">Search</label>
+    <div class="col-sm-6">
+        <input type="text" [(ngModel)]="searchValue" class="form-control" id="searchfilter">
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            
+            <th scope="col">Naziv promocije</th>
+            <th scope="col">Vrsta promocije</th>
+            <th scope="col">Popust</th>
+            <th scope="col">Knjiga</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr *ngFor="let i of listPromocija|searchfilter:searchValue">
+            
+            
+            <td scope="col">{{i.naziv}}</td>
+            <td scope="col">{{i.vrstaPromocije}}</td>
+            <td scope="col">{{i.popust}} %</td>
+            <td scope="col">{{'-'}}</td>
+            
+        </tr>
+        
+    </tbody>
+</table>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { OneTimeLoginComponent } from './login/one-time-login/one-time-login.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'eLibraryAngular';
+   sideBarOpen = true;
+  
+ 
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+  
 }

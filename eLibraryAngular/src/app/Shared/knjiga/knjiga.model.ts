@@ -1,10 +1,10 @@
 import { Byte } from "@angular/compiler/src/util";
+import { getPositionOfLineAndCharacter } from "typescript";
 
 export class Knjiga {
     public knjigaId:number=0;
     public nazivKnjige:string='';
     public pisacId:number=0;
-    public Pisac:string='';
     public zanrId:number=0;
     public cijena:number=0;
     public naStanju:Byte=0;
@@ -20,7 +20,10 @@ export class Knjiga {
         cijena:number,
         naStanju:Byte,
         kolicina:number,
-        eKnjiga:string
+        eKnjiga:string,
+        
 
     ){}
+    
+    
 }
