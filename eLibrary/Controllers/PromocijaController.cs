@@ -36,7 +36,7 @@ namespace eLibrary.Controllers
         {
             var promocija = await _context.Promocija
                                            .Include(p =>p.Knjiga)
-                                           .Where(k => k.PromocijaId == id)
+                                           .Where(p => p.PromocijaId == id)
                                            .FirstOrDefaultAsync();
 
             if (promocija == null)

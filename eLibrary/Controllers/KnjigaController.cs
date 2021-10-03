@@ -25,7 +25,10 @@ namespace eLibrary.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Knjiga>>> GetKnjiga()
         {
-            return await _context.Knjiga.ToListAsync();
+            return await _context.Knjiga
+                                     .Include(k => k.Pisac)
+                                     .Include(k=>k.Zanr)
+                                     .ToListAsync();
         }
 
         // GET: api/Knjiga/5
@@ -35,6 +38,7 @@ namespace eLibrary.Controllers
             
             var knjiga = await _context.Knjiga
                                            .Include(k => k.Zanr)
+                                           .Include(k=>k.Pisac)
                                            .Where(k => k.KnjigaId== id)
                                            .FirstOrDefaultAsync();
 

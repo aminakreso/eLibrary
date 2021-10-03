@@ -36,7 +36,7 @@ namespace eLibrary.Controllers
         {
             var clanskaKartica = await _context.ClanskaKartica
                                           .Include(ck => ck.Korisnik)
-                                          .Where(k => k.ClanskaKarticaId == id)
+                                          .Where(ck => ck.ClanskaKarticaId == id)
                                           .FirstOrDefaultAsync();
 
             if (clanskaKartica == null)

@@ -36,7 +36,7 @@ namespace eLibrary.Controllers
         {
             var uplata = await _context.Uplata
                                             .Include(u => u.Korisnik)
-                                            .Where(k => k.UplataId == id)
+                                            .Where(u => u.UplataId == id)
                                             .FirstOrDefaultAsync();
                 
             if (uplata == null)
