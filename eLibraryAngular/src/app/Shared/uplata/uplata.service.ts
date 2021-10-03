@@ -36,7 +36,7 @@ export class UplataService {
   getAllUplata():Observable<Uplata[]>{
     return this.http.get<Uplata[]>(this.baseURL);
   }
-
+  
   
  
  

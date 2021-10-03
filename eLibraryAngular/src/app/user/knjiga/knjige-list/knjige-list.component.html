@@ -2,7 +2,7 @@
 <div class="form-group row">
     <label for="search" class="col-sm-2 col-form-label" style="text-align: right;">Search</label>
     <div class="col-sm-6">
-        <input type="text" [(ngModel)]="searchValue" class="form-control" id="searchfilter">
+        <input type="text"  [(ngModel)]="searchValueKnjiga" class="form-control" id="searchfilterKnjiga">
     </div>
 </div>
 <table class="table">
@@ -21,7 +21,7 @@
     </thead>
     <tbody>
         
-        <tr *ngFor="let i of listKnjiga|searchfilter:searchValue">
+        <tr *ngFor="let i of listKnjiga|searchfilterKnjiga:searchValueKnjiga">
             
             
             <td scope="col">{{i.nazivKnjige}}</td>

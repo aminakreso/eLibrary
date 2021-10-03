@@ -8,7 +8,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
 import {HttpClientModule,HttpClient} from '@angular/common/http';
-import { SearchfilterPipe } from './Shared/SearchFilter/searchfilter.pipe';
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
@@ -34,6 +34,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { ZanrDetailFormComponent } from './admin/zanr/zanr-list/zanr-detail-form/zanr-detail-form.component';
 import { UplataDetailFormComponent } from './admin/uplata/uplata-list/uplata-detail-form/uplata-detail-form.component';
 import { UplataListComponent } from './admin/uplata/uplata-list/uplata-list.component';
+import { SearchfilterZanrPipe } from './Shared/zanr/SearchFilter/searchfilterZanr.pipe';
+import { SearchfilterUplataPipe } from './Shared/uplata/searchfilter-uplata.pipe';
+import { SearchfilterKnjigaPipe } from './Shared/knjiga/searchfilter-knjiga.pipe';
+
+
+
+
 
 
 
@@ -42,8 +49,10 @@ import { UplataListComponent } from './admin/uplata/uplata-list/uplata-list.comp
 @NgModule({
   declarations: [
     AppComponent,
-    
-    SearchfilterPipe,
+
+    SearchfilterKnjigaPipe,
+    SearchfilterUplataPipe,
+    SearchfilterZanrPipe,
     KnjigeListComponent,
     PromocijeListComponent,
     HeaderComponent,

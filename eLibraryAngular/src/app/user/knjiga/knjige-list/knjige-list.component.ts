@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 
 export class KnjigeListComponent implements OnInit {
 
-  searchValue: string='';
+  searchValueKnjiga: string='';
   listKnjiga!: Knjiga[];
   constructor(private knjigaService:KnjigaService) { }
 

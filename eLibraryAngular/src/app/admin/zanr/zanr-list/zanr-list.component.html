@@ -21,7 +21,7 @@
         <div class="form-group row">
             <label for="search" class="col-sm-2 col-form-label" style="text-align: right;">Pretraga:</label>
             <div class="col-sm-10">
-                <input type="text"  class="form-control" id="searchfilter">
+                <input type="text" [(ngModel)]="searchValue" class="form-control" id="searchfilter">
             </div>
         </div>
         <br>
@@ -35,7 +35,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let pd of service.list">
+                <tr *ngFor="let pd of service.list|searchfilter:searchValue">
                     <td (click)="populateForm(pd)">{{pd.naziv}}</td>
                     <td (click)="populateForm(pd)">{{pd.brojKnjigaNaStanju}}</td>
                     

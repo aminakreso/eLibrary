@@ -11,7 +11,9 @@ import { UplataService } from 'src/app/Shared/uplata/uplata.service';
 })
 export class UplataListComponent implements OnInit {
 
-  searchValue: string='';
+  searchValueUplata: string='';
+  
+  
   listUplata!: Uplata[];
   constructor(public service:UplataService,
     private toastr: ToastrService) { }
