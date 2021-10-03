@@ -27,6 +27,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { CommonModule } from '@angular/common';
+import { ZanrService } from './Shared/zanr/zanr.service';
+import { ZanrListComponent } from './admin/zanr/zanr-list/zanr-list.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ZanrDetailFormComponent } from './admin/zanr/zanr-list/zanr-detail-form/zanr-detail-form.component';
+import { UplataDetailFormComponent } from './admin/uplata/uplata-list/uplata-detail-form/uplata-detail-form.component';
+import { UplataListComponent } from './admin/uplata/uplata-list/uplata-list.component';
+
+
+
 
 
 @NgModule({
@@ -40,6 +50,10 @@ import { MatListModule } from '@angular/material/list';
     HomeComponent,
     DashboardComponent,
     SidenavComponent,
+    ZanrListComponent,
+    ZanrDetailFormComponent,
+    
+    UplataListComponent,UplataDetailFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +63,7 @@ import { MatListModule } from '@angular/material/list';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
 
     MatSidenavModule,
     MatToolbarModule,
@@ -56,9 +71,10 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatDividerModule,
     MatListModule,
+    
 
   ],
-  providers: [HttpClientModule,KnjigaService,PromocijaService],
+  providers: [HttpClientModule,KnjigaService,PromocijaService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

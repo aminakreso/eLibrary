@@ -2,29 +2,32 @@
   color: white;
   padding: 0 1rem;
   background: #f1f5f9;
-  width: 100%;
+  
+  
   &__box {
     min-height: 120px;
     background: #1e293b;
     margin: 0 -1rem;
     font-size: 36px;
+    
   }
   &__content {
+   
     min-height: calc(100vh - 178px);
     border-radius: 10px;
-    margin-top: -2rem;
     background: white;
     color: black;
     
     &-data {
-      top: 15%;
-      left: 50%;
+      
+      
       transform: translate(-50%, -50%);
       width: 100%;
     }
   }
   
 }
+
 :host {
   display: flex;
   flex-direction: column;

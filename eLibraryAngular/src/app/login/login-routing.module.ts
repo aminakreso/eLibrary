@@ -8,7 +8,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ResetPassAdminComponent } from './admin-login/reset-pass-admin/reset-pass-admin.component';
 
 const routes: Routes = [
-  { path: '',  redirectTo: 'one-time-login', pathMatch: 'full' },
+  { path: '',  redirectTo: 'admin-login', pathMatch: 'full' },
   {
     path: 'one-time-login',
     component: OneTimeLoginComponent

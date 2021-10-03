@@ -26,18 +26,22 @@ namespace eLibrary
         }
 
         public IConfiguration Configuration { get; }
-
+        readonly string allowSpecificOrigins = "_allowSpecificOrigins";
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("MyCorsImplementationPolicy", builder =>
+                options.AddPolicy(allowSpecificOrigins,
+                builder =>
                 {
-                    builder.WithOrigins("*");
-                });
-            });
 
+                    builder.WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+
+            });
             services.AddControllers();
 
             services.AddScoped<ValidationFilterAttribute>();
@@ -66,7 +70,7 @@ namespace eLibrary
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors("MyCorsImplementationPolicy");
+            app.UseCors(allowSpecificOrigins);
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

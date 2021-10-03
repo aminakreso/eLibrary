@@ -4,6 +4,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 
 
+
+
 const routes: Routes = [
   {
     path: '',
@@ -31,6 +33,15 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
+  
+  {
+    path: 'zanr',
+    loadChildren: () => import('./admin/zanr/zanr.module').then(m => m.ZanrModule)
+  },
+  {
+    path: 'uplata',
+    loadChildren: () => import('./admin/uplata/uplata.module').then(m => m.UplataModule)
+  },
   
 ];
 
