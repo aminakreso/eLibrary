@@ -25,14 +25,19 @@ namespace eLibrary.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Promocija>>> GetPromocija()
         {
-            return await _context.Promocija.ToListAsync();
+            return await _context.Promocija
+                                     .Include(p => p.Knjiga)
+                                     .ToListAsync();
         }
 
         // GET: api/Promocija/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Promocija>> GetPromocija(int id)
         {
-            var promocija = await _context.Promocija.FindAsync(id);
+            var promocija = await _context.Promocija
+                                           .Include(p =>p.Knjiga)
+                                           .Where(k => k.KnjigaId == id)
+                                           .FirstOrDefaultAsync();
 
             if (promocija == null)
             {
