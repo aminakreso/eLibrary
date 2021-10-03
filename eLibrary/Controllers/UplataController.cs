@@ -25,15 +25,20 @@ namespace eLibrary.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Uplata>>> GetUplata()
         {
-            return await _context.Uplata.ToListAsync();
+            return await _context.Uplata
+                                    .Include(u=>u.Korisnik)
+                                    .ToListAsync();
         }
 
         // GET: api/Uplata/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Uplata>> GetUplata(int id)
         {
-            var uplata = await _context.Uplata.FindAsync(id);
-
+            var uplata = await _context.Uplata
+                                            .Include(u => u.Korisnik)
+                                            .Where(k => k.KorisnikId == id)
+                                            .FirstOrDefaultAsync();
+                
             if (uplata == null)
             {
                 return NotFound();
