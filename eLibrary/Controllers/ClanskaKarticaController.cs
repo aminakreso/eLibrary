@@ -25,14 +25,19 @@ namespace eLibrary.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ClanskaKartica>>> GetClanskaKartica()
         {
-            return await _context.ClanskaKartica.ToListAsync();
+            return await _context.ClanskaKartica
+                                     .Include(ck => ck.Korisnik)
+                                     .ToListAsync();
         }
 
         // GET: api/ClanskaKartica/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ClanskaKartica>> GetClanskaKartica(int id)
         {
-            var clanskaKartica = await _context.ClanskaKartica.FindAsync(id);
+            var clanskaKartica = await _context.ClanskaKartica
+                                          .Include(ck => ck.Korisnik)
+                                          .Where(k => k.ClanskaKarticaId == id)
+                                          .FirstOrDefaultAsync();
 
             if (clanskaKartica == null)
             {
@@ -40,6 +45,7 @@ namespace eLibrary.Controllers
             }
 
             return clanskaKartica;
+           
         }
 
         // PUT: api/ClanskaKartica/5
