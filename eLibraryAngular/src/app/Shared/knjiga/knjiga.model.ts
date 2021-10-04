@@ -1,29 +1,25 @@
-import { Byte } from "@angular/compiler/src/util";
-import { getPositionOfLineAndCharacter } from "typescript";
+import { PisacDropdownVM } from "src/app/PisacDropdownVM";
+import { ZanrDropdownVM } from "src/app/ZanrDropdownVM";
+
+
+
 
 export class Knjiga {
     public knjigaId:number=0;
-    public nazivKnjige:string='';
+    public nazivKnjige:string="";
     public pisacId:number=0;
     public zanrId:number=0;
     public cijena:number=0;
-    public naStanju:Byte=0;
+    public naStanju:number=0;
     public kolicina:number=0;
-    public eKnjiga:string='';
-    
-    
-    constructor(
-        knjigaId:number,
-        nazivKnjige:string,
-        pisacId:number,
-        zanrId:number,
-        cijena:number,
-        naStanju:Byte,
-        kolicina:number,
-        eKnjiga:string,
-        
+    public eKnjiga:string="";
+    public ime:string="";
+    public prezime:string="";
+    public pisac!:PisacDropdownVM;
+    public zanr!:ZanrDropdownVM;
 
-    ){}
+
     
+   
     
-}
+} 

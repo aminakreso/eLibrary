@@ -1,0 +1,62 @@
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+      
+  
+<div class="jumbotron py-3">
+    <h1 >Prikaz pisaca</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <br>
+        <app-pisac-detail-form></app-pisac-detail-form>
+        
+    </div>
+    <div class="col-md-8">
+        <div class="form-group row">
+            <label for="search" class="col-sm-2 col-form-label" style="text-align: right;">Pretraga:</label>
+            <div class="col-sm-10">
+                <input type="text" [(ngModel)]="searchValuePisac" class="form-control" id="searchfilterPisac">
+            </div>
+        </div>
+        <br>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Ime:</th>
+                    <th>Prezime:</th>
+                    <th>Drzava:</th>
+                    <th>Status(aktivan/neaktivan):</th>
+                    <th>Broj djela:</th>
+                    
+                    <th>Obriši</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pd of service.list|searchfilterPisac:searchValuePisac">
+                    <td (click)="populateForm(pd)">{{pd.ime}}</td>
+                    <td (click)="populateForm(pd)">{{pd.prezime}}</td>
+                    <td (click)="populateForm(pd)">{{pd.drzava}}</td>
+                    <td (click)="populateForm(pd)">
+                        <button disabled class="btn btn-success r" *ngIf="pd.status==1;else other_content" >DA</button>
+                        <ng-template #other_content><button disabled class="btn btn-danger">NE</button></ng-template> 
+                    </td>
+                    <td (click)="populateForm(pd)">{{pd.brojDjela}}</td>
+                    
+                    <td>
+                        <button class="btn btn-danger" (click)="onDelete(pd.pisacId)">X</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</mat-drawer-content>
+</mat-drawer-container>

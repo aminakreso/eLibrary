@@ -18,7 +18,6 @@ import { PromocijeListComponent } from './user/promocija/promocije-list/promocij
 
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -40,6 +39,11 @@ import { SearchfilterKnjigaPipe } from './Shared/knjiga/searchfilter-knjiga.pipe
 import { ClanskakartaListComponent } from './admin/clanskakarta/clanskakarta-list/clanskakarta-list.component';
 import { ClanskakartaDetailFormComponent } from './admin/clanskakarta/clanskakarta-list/clanskakarta-detail-form/clanskakarta-detail-form.component';
 import { SearchfilterClanskakartaPipe } from './Shared/clanskakarta/searchfilter-clanskakarta.pipe';
+import { KnjigaListComponent } from './admin/knjiga/knjiga-list/knjiga-list.component';
+import { KnjigaDetailFormComponent } from './admin/knjiga/knjiga-list/knjiga-detail-form/knjiga-detail-form.component';
+import { PisacListComponent } from './admin/pisac/pisac-list/pisac-list.component';
+import { PisacDetailFormComponent } from './admin/pisac/pisac-list/pisac-detail-form/pisac-detail-form.component';
+import { SearchfilterPisacPipe } from './Shared/pisac/SearchFilter/searchfilterPisac.pipe';
 
 
 
@@ -54,6 +58,7 @@ import { SearchfilterClanskakartaPipe } from './Shared/clanskakarta/searchfilter
   declarations: [
     AppComponent,
 
+    SearchfilterPisacPipe,
     SearchfilterClanskakartaPipe,
     SearchfilterKnjigaPipe,
     SearchfilterUplataPipe,
@@ -62,12 +67,12 @@ import { SearchfilterClanskakartaPipe } from './Shared/clanskakarta/searchfilter
     PromocijeListComponent,
     HeaderComponent,
     HomeComponent,
-    DashboardComponent,
     SidenavComponent,
-    ZanrListComponent,
-    ZanrDetailFormComponent,
+    ZanrListComponent,ZanrDetailFormComponent,
     ClanskakartaListComponent,ClanskakartaDetailFormComponent,
     UplataListComponent,UplataDetailFormComponent,
+    KnjigaListComponent,KnjigaDetailFormComponent,
+    PisacListComponent,PisacDetailFormComponent,
   ],
   imports: [
     BrowserModule,

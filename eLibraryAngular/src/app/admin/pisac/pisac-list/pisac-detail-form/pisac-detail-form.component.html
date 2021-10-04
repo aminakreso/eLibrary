@@ -1,0 +1,46 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="pisacId" [value]="service.formData.pisacId" />
+    <div class="form-group">
+        <label>Ime: </label>
+        <input class="form-control form-control-lg" placeholder="Ime pisca" name="ime"
+            #ime="ngModel" [(ngModel)]="service.formData.ime"
+            required [class.invalid]="ime.invalid && ime.touched">
+    </div>
+    <div class="form-group">
+        <label>Prezime: </label>
+        <input class="form-control form-control-lg" placeholder="Prezime pisca" name="prezime"
+            #prezime="ngModel" [(ngModel)]="service.formData.prezime"
+            required [class.invalid]="prezime.invalid && prezime.touched">
+    </div>
+    <div class="form-group">
+        <label>Drzava: </label>
+        <input class="form-control form-control-lg" placeholder="Drzava pisca" name="drzava"
+            #drzava="ngModel" [(ngModel)]="service.formData.drzava"
+            required [class.invalid]="drzava.invalid && drzava.touched">
+    </div>
+    <div class="form-group">
+        <label>Broj djela: </label>
+        <input class="form-control form-control-lg" placeholder="Broj djela" name="brojDjela"
+            #brojDjela="ngModel" [(ngModel)]="service.formData.brojDjela"
+            required [class.invalid]="brojDjela.invalid && brojDjela.touched">
+    </div>
+    <div class="form-group">
+        
+        <label>Status: </label>
+        <select class="form-control form-control-sm" 
+        [(ngModel)]="service.formData.status" name="status" required="true"
+        >
+        
+        
+        <option value="1" >Aktivan</option>
+        <option value="0" >Neaktivan</option>
+        
+      </select>
+    </div>
+    
+    
+    
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SPREMI</button>
+    </div>
+</form>

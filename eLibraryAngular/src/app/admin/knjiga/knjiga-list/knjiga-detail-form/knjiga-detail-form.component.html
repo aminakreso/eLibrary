@@ -1,0 +1,75 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="knjigaId" [value]="service.formData.knjigaId" />
+    
+    <div class="form-group">
+        <label>Naziv knjige: </label>
+        <input class="form-control form-control-lg" placeholder="Naziv knjige" name="nazivKnjige"
+            #nazivKnjige="ngModel" [(ngModel)]="service.formData.nazivKnjige"
+            required [class.invalid]="nazivKnjige.invalid && nazivKnjige.touched">
+    </div>
+    <div class="form-group">
+        <label>Pisac: </label>
+        <select class="form-control form-control-lg" 
+        [(ngModel)]="service.formData.pisacId" name="pisacId" required="true">
+        <option value="0">--Odaberi pisca--</option> 
+        <option *ngFor="let i of pisci" [ngValue]="i.pisacId" >{{i.ime+" "+i.prezime}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label>Zanr: </label>
+        <select class="form-control form-control-lg" 
+        [(ngModel)]="service.formData.zanrId" name="zanrId" required="true">
+        <option value="0">--Odaberi zanr--</option> 
+        <option *ngFor="let i of zanrovi" [ngValue]="i.zanrId" >{{i.naziv}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label>Cijena: </label>
+        <input class="form-control form-control-lg" placeholder="cijena" name="cijena"
+            #cijena="ngModel" [(ngModel)]="service.formData.cijena"
+            required [class.invalid]="cijena.invalid && cijena.touched">
+    </div>
+
+
+
+    <div class="form-group">
+        <label>Kolicina: </label>
+        <input class="form-control form-control-lg" placeholder="kolicina" name="kolicina"
+            #kolicina="ngModel" [(ngModel)]="service.formData.kolicina"
+            required [class.invalid]="kolicina.invalid && kolicina.touched">
+    </div>
+    
+    <div class="row form-group">
+        <div class="col-md-6 ">
+    
+        <label>Na stanju: </label>
+        <select class="form-control form-control-sm" 
+        [(ngModel)]="service.formData.naStanju" name="naStanju" required="true"
+        >
+        
+        
+        <option value="1" >DA</option>
+        <option value="0" >NE</option>
+        
+      </select>
+        </div>
+        <div class="col-md-6">
+    
+            <label>eKnjiga: </label>
+            <select class="form-control form-control-sm" 
+            [(ngModel)]="service.formData.eKnjiga" name="eKnjiga" required="true"
+            >
+            
+            <option value="da" >DA</option>
+            <option value="ne" >NE</option>
+            
+          </select>
+        </div>
+    </div>  
+    
+   
+    
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SPREMI</button>
+    </div>
+</form>

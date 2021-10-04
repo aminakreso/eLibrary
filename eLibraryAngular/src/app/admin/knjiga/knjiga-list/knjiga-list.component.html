@@ -1,0 +1,70 @@
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+      
+  
+<div class="jumbotron py-3">
+    <h1 >Prikaz knjiga</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <br>
+        <app-knjiga-detail-form></app-knjiga-detail-form>
+        
+    </div>
+    <div class="col-md-8">
+        <div class="form-group row">
+            <label for="search" class="col-sm-2 col-form-label" style="text-align: right;">Pretraga:</label>
+            <div class="col-sm-10">
+                <input type="text" [(ngModel)]="searchValueKnjiga" class="form-control" id="searchfilterKnjiga">
+            </div>
+        </div>
+        <br>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Naziv:</th>
+                    <th>Pisac:</th>
+                    <th>Zanr:</th>
+                    <th>Cijena:</th>
+                    <th>Na stanju:</th>
+                    <th>Kolicina:</th>
+                    <th>eKnjiga:</th>
+                    
+                    <th>Obriši</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pd of service.list|searchfilterKnjiga:searchValueKnjiga">
+                    <td (click)="populateForm(pd)">{{pd.nazivKnjige}}</td>
+                    <td (click)="populateForm(pd)">{{pd.pisac.ime+" "+pd.pisac.prezime}}</td>
+                    <td (click)="populateForm(pd)">{{pd.zanr.naziv}}</td>
+                    <td (click)="populateForm(pd)">{{pd.cijena}} KM</td>
+                    <td (click)="populateForm(pd)">
+                        <button disabled class="btn btn-success" *ngIf="pd.naStanju==1;else other_content" >DA</button>
+                        <ng-template #other_content><button disabled class="btn btn-danger">NE</button></ng-template> 
+                    </td>
+                    <td (click)="populateForm(pd)">{{pd.kolicina}}</td>
+                    
+                    
+                        <td (click)="populateForm(pd)">
+                            <button disabled class="btn btn-success" *ngIf="pd.eKnjiga=='da';else other_content" >DA</button>
+                            <ng-template #other_content><button disabled class="btn btn-danger">NE</button></ng-template> 
+                        </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="onDelete(pd.knjigaId)">X</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</mat-drawer-content>
+</mat-drawer-container>

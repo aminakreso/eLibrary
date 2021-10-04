@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { HomeComponent } from './home/home.component';
 
 
@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./user/promocija/promocija.module').then(m => m.PromocijaModule)
   },
   { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  
   
   {
     path: 'zanr',
@@ -45,6 +45,14 @@ const routes: Routes = [
   {
     path: 'clanskakarta',
     loadChildren: () => import('./admin/clanskakarta/clanskakarta.module').then(m => m.ClanskakartaModule)
+  },
+  {
+    path: 'knjiga',
+    loadChildren: () => import('./admin/knjiga/knjiga.module').then(m => m.KnjigaModule)
+  },
+  {
+    path: 'pisac',
+    loadChildren: () => import('./admin/pisac/pisac.module').then(m => m.PisacModule)
   },
   
 ];
