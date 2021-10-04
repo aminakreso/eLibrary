@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'uplata',
     loadChildren: () => import('./admin/uplata/uplata.module').then(m => m.UplataModule)
   },
+  {
+    path: 'clanskakarta',
+    loadChildren: () => import('./admin/clanskakarta/clanskakarta.module').then(m => m.ClanskakartaModule)
+  },
   
 ];
 

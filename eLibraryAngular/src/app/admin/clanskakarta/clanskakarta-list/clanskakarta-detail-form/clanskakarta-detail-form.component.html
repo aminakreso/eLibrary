@@ -1,0 +1,41 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="uplataId" [value]="service.formData.clanskaKarticaId" />
+    
+    <div class="form-group">
+        <label>Korisnik: </label>
+        <select class="form-control form-control-lg" 
+        [(ngModel)]="service.formData.korisnikId" name="korisnikId" required="true">
+        <option value="0">--Odaberi korisnika--</option> 
+        <option *ngFor="let i of korisnici" [ngValue]="i.korisnikId" >{{i.ime+" "+i.prezime}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label>Datum kreiranja: </label>
+        <input type="date" class="form-control form-control-lg" placeholder="datumKreiranja" name="datumKreiranja"
+            #datumKreiranja="ngModel" [(ngModel)]="service.formData.datumKreiranja"
+            required [class.invalid]="datumKreiranja.invalid && datumKreiranja.touched">
+    </div>
+    <!--
+    <div class="form-group">
+        <label>Aktivna: </label>
+        <input class="form-control form-control-lg" placeholder="aktivna" name="aktivna"
+            #aktivna="ngModel" [(ngModel)]="service.formData.aktivna"
+            required [class.invalid]="aktivna.invalid && aktivna.touched">
+    </div>-->
+    <div class="form-group">
+        <label>Aktivna: </label>
+        <select class="form-control form-control-lg" 
+        [(ngModel)]="service.formData.aktivna" name="aktivna" required="true"
+        >
+        
+        <option value="0" >DA</option>
+        <option value="1" >NE</option>
+        
+      </select>
+    </div>
+    
+    
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SPREMI</button>
+    </div>
+</form>

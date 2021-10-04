@@ -1,0 +1,59 @@
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+      
+  
+<div class="jumbotron py-3">
+    <h1 >Prikaz članskih kartica</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <br>
+        <app-clanskakarta-detail-form></app-clanskakarta-detail-form>
+        
+    </div>
+    <div class="col-md-8">
+        <div class="form-group row">
+            <label for="search" class="col-sm-2 col-form-label" style="text-align: right;">Pretraga:</label>
+            <div class="col-sm-10">
+                <input type="text" [(ngModel)]="searchValueClanskakarta" class="form-control" id="searchfilterClanskakarta">
+            </div>
+        </div>
+        <br>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Korisnik:</th>
+                    <th>Datum kreiranja:</th>
+                    <th>Aktivna:</th>
+                    
+                    <th>Obriši</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pd of service.list|searchfilterClanskakarta:searchValueClanskakarta">
+                    <td (click)="populateForm(pd)">{{pd.korisnik.ime+" "+pd.korisnik.prezime}}</td>
+                    <td (click)="populateForm(pd)">{{pd.datumKreiranja | date: 'dd/MM/yyyy'}}</td>
+                    
+                    
+                        <td (click)="populateForm(pd)">
+                            <button disabled class="btn btn-success" *ngIf="pd.aktivna==0;else other_content" >DA</button>
+                            <ng-template #other_content><button disabled class="btn btn-danger">NE</button></ng-template> 
+                        </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="onDelete(pd.clanskaKarticaId)">X</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</mat-drawer-content>
+</mat-drawer-container>

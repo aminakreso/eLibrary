@@ -37,6 +37,10 @@ import { UplataListComponent } from './admin/uplata/uplata-list/uplata-list.comp
 import { SearchfilterZanrPipe } from './Shared/zanr/SearchFilter/searchfilterZanr.pipe';
 import { SearchfilterUplataPipe } from './Shared/uplata/searchfilter-uplata.pipe';
 import { SearchfilterKnjigaPipe } from './Shared/knjiga/searchfilter-knjiga.pipe';
+import { ClanskakartaListComponent } from './admin/clanskakarta/clanskakarta-list/clanskakarta-list.component';
+import { ClanskakartaDetailFormComponent } from './admin/clanskakarta/clanskakarta-list/clanskakarta-detail-form/clanskakarta-detail-form.component';
+import { SearchfilterClanskakartaPipe } from './Shared/clanskakarta/searchfilter-clanskakarta.pipe';
+
 
 
 
@@ -50,6 +54,7 @@ import { SearchfilterKnjigaPipe } from './Shared/knjiga/searchfilter-knjiga.pipe
   declarations: [
     AppComponent,
 
+    SearchfilterClanskakartaPipe,
     SearchfilterKnjigaPipe,
     SearchfilterUplataPipe,
     SearchfilterZanrPipe,
@@ -61,7 +66,7 @@ import { SearchfilterKnjigaPipe } from './Shared/knjiga/searchfilter-knjiga.pipe
     SidenavComponent,
     ZanrListComponent,
     ZanrDetailFormComponent,
-    
+    ClanskakartaListComponent,ClanskakartaDetailFormComponent,
     UplataListComponent,UplataDetailFormComponent,
   ],
   imports: [
