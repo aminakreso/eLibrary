@@ -1,10 +1,14 @@
+
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
+
 import { Uplata } from 'src/app/Shared/uplata/uplata.model';
 import { UplataService } from 'src/app/Shared/uplata/uplata.service';
+import { KorisnikDropdownVM } from 'src/app/KorisnikDropdownVM';
 
 
 @Component({
@@ -15,10 +19,19 @@ import { UplataService } from 'src/app/Shared/uplata/uplata.service';
 })
 export class UplataDetailFormComponent implements OnInit {
 
-  constructor(public service: UplataService,
+  constructor(private http:HttpClient,public service: UplataService,
     private toastr: ToastrService) { }
 
+  korisnici!:KorisnikDropdownVM[];
+  korisnik!:KorisnikDropdownVM;
+    
   ngOnInit(): void {
+    this.GetKorisnici();
+  }
+  GetKorisnici(){
+    this.http.get<KorisnikDropdownVM[]>('https://localhost:44314/api/korisnik').subscribe((result:KorisnikDropdownVM[])=>{
+      this.korisnici=result;
+    });
   }
 
   onSubmit(form: NgForm) {

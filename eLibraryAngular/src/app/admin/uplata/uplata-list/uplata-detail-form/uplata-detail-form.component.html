@@ -1,10 +1,13 @@
 <form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
     <input type="hidden" name="uplataId" [value]="service.formData.uplataId" />
+    
     <div class="form-group">
-        <label>Korinsik: </label>
-        <input class="form-control form-control-lg" placeholder="Naziv žanra" name="korisnikId"
-            #korisnikId="ngModel" [(ngModel)]="service.formData.korisnikId"
-            required [class.invalid]="korisnikId.invalid && korisnikId.touched">
+        <label>Korisnik: </label>
+        <select class="form-control form-control-lg" 
+        [(ngModel)]="service.formData.korisnikId" name="korisnikId" required="true">
+        <option value="0">--Odaberi korisnika--</option> 
+        <option *ngFor="let i of korisnici" [ngValue]="i.korisnikId" >{{i.ime+" "+i.prezime}}</option>
+      </select>
     </div>
     <div class="form-group">
         <label>Datum: </label>

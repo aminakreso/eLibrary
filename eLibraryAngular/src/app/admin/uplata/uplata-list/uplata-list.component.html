@@ -37,7 +37,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let pd of service.list|searchfilterUplata:searchValueUplata">
-                    <td (click)="populateForm(pd)">{{pd.korisnikId}}</td>
+                    <td (click)="populateForm(pd)">{{pd.korisnik.ime+" "+pd.korisnik.prezime}}</td>
                     <td (click)="populateForm(pd)">{{pd.datum | date: 'dd/MM/yyyy'}}</td>
                     <td (click)="populateForm(pd)">{{pd.visinaUplate}} KM</td>
                     

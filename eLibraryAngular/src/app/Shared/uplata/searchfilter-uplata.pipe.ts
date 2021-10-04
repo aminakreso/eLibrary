@@ -18,7 +18,8 @@ export class SearchfilterUplataPipe implements PipeTransform {
     {
     return item.filter(items=>
       
-      items.visinaUplate.toString().toLocaleLowerCase().includes(searchValueUplata.toLocaleLowerCase()));
+      items.korisnik.ime.toLocaleLowerCase().includes(searchValueUplata.toLocaleLowerCase())||
+      items.korisnik.prezime.toLocaleLowerCase().includes(searchValueUplata.toLocaleLowerCase()));
     }
   }
 }
