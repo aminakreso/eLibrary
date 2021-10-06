@@ -20,16 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'knjiga',
-    loadChildren: () => import('./user/knjiga/knjiga.module').then(m => m.KnjigaModule)
-  },
-  {
     path: 'one-time-login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  },
-  {
-    path: 'promocija',
-    loadChildren: () => import('./user/promocija/promocija.module').then(m => m.PromocijaModule)
   },
   { path: 'home', component: HomeComponent },
   
@@ -54,6 +46,10 @@ const routes: Routes = [
     path: 'pisac',
     loadChildren: () => import('./admin/pisac/pisac.module').then(m => m.PisacModule)
   },
+  {
+    path: 'promocija',
+    loadChildren: () => import('./admin/promocija/promocija.module').then(m => m.PromocijaModule)
+  }
   
 ];
 

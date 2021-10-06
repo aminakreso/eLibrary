@@ -12,9 +12,8 @@ import {HttpClientModule,HttpClient} from '@angular/common/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
-import { KnjigeListComponent } from './user/knjiga/knjige-list/knjige-list.component';
-import { PromocijaService } from './Shared/promocija/promocija.service';
-import { PromocijeListComponent } from './user/promocija/promocije-list/promocije-list.component';
+
+
 
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -44,27 +43,20 @@ import { KnjigaDetailFormComponent } from './admin/knjiga/knjiga-list/knjiga-det
 import { PisacListComponent } from './admin/pisac/pisac-list/pisac-list.component';
 import { PisacDetailFormComponent } from './admin/pisac/pisac-list/pisac-detail-form/pisac-detail-form.component';
 import { SearchfilterPisacPipe } from './Shared/pisac/SearchFilter/searchfilterPisac.pipe';
-
-
-
-
-
-
-
-
-
+import { PromocijaService } from './Shared/promocija/promocija.service';
+import { SearchfilterPromocijaPipe } from './Shared/promocija/searchfilter-promocija.pipe';
+import { PromocijaListComponent } from './admin/promocija/promocija-list/promocija-list.component';
+import { PromocijaDetailFormComponent } from './admin/promocija/promocija-list/promocija-detail-form/promocija-detail-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     SearchfilterPisacPipe,
     SearchfilterClanskakartaPipe,
     SearchfilterKnjigaPipe,
     SearchfilterUplataPipe,
     SearchfilterZanrPipe,
-    KnjigeListComponent,
-    PromocijeListComponent,
+    SearchfilterPromocijaPipe,
     HeaderComponent,
     HomeComponent,
     SidenavComponent,
@@ -73,6 +65,7 @@ import { SearchfilterPisacPipe } from './Shared/pisac/SearchFilter/searchfilterP
     UplataListComponent,UplataDetailFormComponent,
     KnjigaListComponent,KnjigaDetailFormComponent,
     PisacListComponent,PisacDetailFormComponent,
+    PromocijaListComponent, PromocijaDetailFormComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +86,7 @@ import { SearchfilterPisacPipe } from './Shared/pisac/SearchFilter/searchfilterP
     
 
   ],
-  providers: [HttpClientModule,KnjigaService,PromocijaService,],
+  providers: [HttpClientModule,KnjigaService, PromocijaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
