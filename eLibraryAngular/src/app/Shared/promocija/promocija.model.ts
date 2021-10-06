@@ -7,5 +7,13 @@ export class Promocija {
     public popust:number=0;
     public knjigaId:number=0;
       
+    constructor(
+        promocijaId:number=0,
+        naziv:string='',
+        vrstaPromocije:string='',
+        popoust:number=0
+            
+    
+        ){}
     
 }

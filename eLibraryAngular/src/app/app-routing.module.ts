@@ -49,6 +49,10 @@ const routes: Routes = [
   {
     path: 'promocija',
     loadChildren: () => import('./admin/promocija/promocija.module').then(m => m.PromocijaModule)
+  },
+  {
+    path: 'korisnik',
+    loadChildren: () => import('./admin/korisnik/korisnik.module').then(m => m.KorisnikModule)
   }
   
 ];

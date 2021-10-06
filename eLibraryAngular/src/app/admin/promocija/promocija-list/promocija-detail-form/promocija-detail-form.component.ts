@@ -27,7 +27,6 @@ export class PromocijaDetailFormComponent implements OnInit {
     
   }
   
-  
 
   onSubmit(form: NgForm) {
     if (this.service.formData.promocijaId == 0)
@@ -57,7 +56,6 @@ export class PromocijaDetailFormComponent implements OnInit {
       err => { console.log(err); }
     );
   }
-
 
   resetForm(form: NgForm) {
     form.form.reset();
