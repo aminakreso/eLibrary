@@ -9,6 +9,9 @@ import { SearchfilterClanskakartaPipe } from './clanskakarta/searchfilter-clansk
 import { SearchfilterPisacPipe } from './pisac/SearchFilter/searchfilterPisac.pipe';
 import { SearchfilterZanrPipe } from './zanr/SearchFilter/searchfilterZanr.pipe';
 import { SearchfilterKorisnikPipe } from './korisnik/SearchFilter/searchfilterKorisnik.pipe';
+import { SearchfilterKorisnickiRacunPipe } from './korisnickiracun/SearchFilter/searchfilterKorisnickiRacun.pipe';
+import { SearchfilterNarudzbaPipe } from './narudzba/SearchFilter/searchfilterNarudzba.pipe';
+
 @NgModule({
   imports: [
     RouterModule,
@@ -26,7 +29,9 @@ import { SearchfilterKorisnikPipe } from './korisnik/SearchFilter/searchfilterKo
     SearchfilterClanskakartaPipe,
     SearchfilterPisacPipe,
     SearchfilterZanrPipe, 
-    SearchfilterKorisnikPipe
+    SearchfilterKorisnikPipe,
+    SearchfilterKorisnickiRacunPipe,
+    SearchfilterNarudzbaPipe
   ],
 })
 export class SharedModule { }

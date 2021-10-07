@@ -59,6 +59,9 @@ import { KorisnickiRacunListComponent } from './admin/korisnickiracun/korisnicki
 import { KorisnickiRacunDetailFormComponent } from './admin/korisnickiracun/korisnickiracun-list/korisnickiracun-detail-form/korisnickiracun-detail-form.component';
 import { KorisnickiRacunService } from './Shared/korisnickiracun/korisnickiracun.service';
 import { SearchfilterKorisnickiRacunPipe } from './Shared/korisnickiracun/SearchFilter/searchfilterKorisnickiRacun.pipe';
+import { SearchfilterNarudzbaPipe } from './Shared/narudzba/SearchFilter/searchfilterNarudzba.pipe';
+import { NarudzbaListComponent } from './admin/narudzba/narudzba-list/narudzba-list.component';
+import{NarudzbaService} from './Shared/narudzba/narudzba.service';
 
 
 @NgModule({
@@ -72,6 +75,7 @@ import { SearchfilterKorisnickiRacunPipe } from './Shared/korisnickiracun/Search
     SearchfilterPromocijaPipe,
     SearchfilterKorisnikPipe,
     SearchfilterKorisnickiRacunPipe,
+    SearchfilterNarudzbaPipe,
     HeaderComponent,
     HomeComponent,
     SidenavComponent,
@@ -82,7 +86,8 @@ import { SearchfilterKorisnickiRacunPipe } from './Shared/korisnickiracun/Search
     PisacListComponent,PisacDetailFormComponent,
     PromocijaListComponent, PromocijaDetailFormComponent,
     KorisnikListComponent,KorisnikDetailFormComponent,
-    KorisnickiRacunListComponent, KorisnickiRacunDetailFormComponent
+    KorisnickiRacunListComponent, KorisnickiRacunDetailFormComponent,
+    NarudzbaListComponent
     
   ],
   imports: [
@@ -104,7 +109,7 @@ import { SearchfilterKorisnickiRacunPipe } from './Shared/korisnickiracun/Search
     
 
   ],
-  providers: [HttpClientModule, KnjigaService, PromocijaService, PisacService, ZanrService, UplataService, KorisnikService, KorisnickiRacunService],
+  providers: [HttpClientModule, KnjigaService, PromocijaService, PisacService, ZanrService, UplataService, KorisnikService, KorisnickiRacunService, NarudzbaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
