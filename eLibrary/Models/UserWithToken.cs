@@ -7,9 +7,9 @@ namespace eLibrary.Models
 {
     public class UserWithToken :KorisnickiRacun
     {
-        //public string AccessToken { get; set; }
-        //public string RefreshToken { get; set; }
-        public string Token { get; set; }
+        public string AccessToken { get; set; }
+        public string RefreshToken { get; set; }
+        //public string Token { get; set; }
 
         public UserWithToken(KorisnickiRacun korisnickiRacun)
         {

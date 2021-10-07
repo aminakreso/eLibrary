@@ -29,6 +29,7 @@ namespace eLibrary.Models
         public virtual DbSet<Notifikacija> Notifikacija { get; set; }
         public virtual DbSet<Pisac> Pisac { get; set; }
         public virtual DbSet<Promocija> Promocija { get; set; }
+        public virtual DbSet<RefreshToken> RefreshToken { get; set; }
         public virtual DbSet<Uplata> Uplata { get; set; }
         public virtual DbSet<Zanr> Zanr { get; set; }
 
@@ -42,7 +43,7 @@ namespace eLibrary.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "Bosnian_Latin_100_BIN");
 
             modelBuilder.Entity<Admin>(entity =>
             {
@@ -73,7 +74,7 @@ namespace eLibrary.Models
             modelBuilder.Entity<CekanjeNaKnjigu>(entity =>
             {
                 entity.HasKey(e => e.CekanjeId)
-                    .HasName("PK__CekanjeN__C890264A31F9EB96");
+                    .HasName("PK__CekanjeN__C890264A4B8A31C3");
 
                 entity.ToTable("CekanjeNaKnjigu");
 
@@ -107,6 +108,10 @@ namespace eLibrary.Models
                 entity.Property(e => e.DatumKreiranja).HasColumnType("date");
 
                 entity.Property(e => e.KorisnikId).HasColumnName("KorisnikID");
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(45)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.Korisnik)
                     .WithMany(p => p.ClanskaKartica)
@@ -345,10 +350,37 @@ namespace eLibrary.Models
                     .HasConstraintName("FK_PromocijaKnjiga");
             });
 
+            modelBuilder.Entity<RefreshToken>(entity =>
+            {
+                entity.HasKey(e => e.TokenId)
+                    .HasName("PK_rf");
+
+                entity.ToTable("RefreshToken");
+
+                entity.Property(e => e.TokenId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("TokenID");
+
+                entity.Property(e => e.ExpiryDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("Expiry_date");
+
+                entity.Property(e => e.KorisnickiRacunID).HasColumnName("KorisnickiRacunID");
+
+                entity.Property(e => e.Token)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.KorisnickiRacun)
+                    .WithMany(p => p.RefreshToken)
+                    .HasForeignKey(d => d.KorisnickiRacunID)
+                    .HasConstraintName("Fk_rf");
+            });
+
             modelBuilder.Entity<Uplata>(entity =>
             {
                 entity.HasKey(e => e.UplataId)
-                    .HasName("PK__Uplata__C5B16586F0D94906");
+                    .HasName("PK__Uplata__C5B1658687FBC54C");
 
                 entity.Property(e => e.UplataId).HasColumnName("UplataID");
 

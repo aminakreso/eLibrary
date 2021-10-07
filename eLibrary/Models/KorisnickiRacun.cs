@@ -11,6 +11,7 @@ namespace eLibrary.Models
         {
             Admin = new HashSet<Admin>();
             Korisnik = new HashSet<Korisnik>();
+            RefreshToken = new HashSet<RefreshToken>();
         }
 
         public int KorisnickiRacunId { get; set; }
@@ -20,5 +21,7 @@ namespace eLibrary.Models
 
         public virtual ICollection<Admin> Admin { get; set; }
         public virtual ICollection<Korisnik> Korisnik { get; set; }
+        public virtual ICollection<RefreshToken> RefreshToken { get; set; }
+
     }
 }

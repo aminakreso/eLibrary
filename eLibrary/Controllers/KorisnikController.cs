@@ -13,6 +13,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using System.Security.Cryptography;
 
 namespace eLibrary.Controllers
 {
@@ -100,32 +101,124 @@ namespace eLibrary.Controllers
                                                 .Where(kr => kr.Email == korisnickiRacun.Email
                                                 && kr.Password == korisnickiRacun.Password).FirstOrDefaultAsync();
 
-            UserWithToken userWithToken = new UserWithToken(korisnickiRacun);
+            UserWithToken userWithToken = null;
+
+            if (korisnickiRacun != null)
+            {
+                RefreshToken refreshToken = GenerateRefreshToken();
+                korisnickiRacun.RefreshToken.Add(refreshToken);
+                 _context.SaveChangesAsync();
+
+                userWithToken = new UserWithToken(korisnickiRacun);
+                userWithToken.RefreshToken = refreshToken.Token;
+            }
 
             if (userWithToken == null)
             {
                 return NotFound();
             }
 
+            userWithToken.AccessToken = GenerateAccessToken(korisnickiRacun.KorisnickiRacunId);
+            return userWithToken;
+        }
+
+        private RefreshToken GenerateRefreshToken()
+        {
+            RefreshToken refreshToken = new RefreshToken();
+
+            var randomNumber = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+                refreshToken.Token = Convert.ToBase64String(randomNumber);
+            }
+            refreshToken.ExpiryDate = DateTime.UtcNow.AddMonths(6);
+
+            return refreshToken;
+        }
+        private string GenerateAccessToken(int korisnickiRacunId)
+        {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_jwtsettings.SecretKey);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name,korisnickiRacun.Email)
+                    new Claim(ClaimTypes.Name, Convert.ToString(korisnickiRacunId))
                 }),
-                Expires = DateTime.UtcNow.AddMonths(6),
+                Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                 SecurityAlgorithms.HmacSha256Signature)
             };
-
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            userWithToken.Token = tokenHandler.WriteToken(token);
-            return userWithToken;
+            return tokenHandler.WriteToken(token);
         }
 
-      
+        [HttpPost("RefreshToken")]
+        public async Task<ActionResult<UserWithToken>> RefreshToken([FromBody] RefreshRequest refreshRequest)
+        {
+            KorisnickiRacun korisnickiRacun = await GetUserFromAccessToken(refreshRequest.AccessToken);
+
+            if (korisnickiRacun != null && ValidateRefreshToken(korisnickiRacun, refreshRequest.RefreshToken))
+            {
+                UserWithToken userWithToken = new UserWithToken(korisnickiRacun);
+                userWithToken.AccessToken = GenerateAccessToken(korisnickiRacun.KorisnickiRacunId);
+
+                return userWithToken;
+            }
+
+            return null;
+        }
+
+        private bool ValidateRefreshToken(KorisnickiRacun korisnickiRacun, string refreshToken)
+        {
+
+            RefreshToken refreshTokenUser = _context.RefreshToken.Where(rt => rt.Token == refreshToken)
+                                                .OrderByDescending(rt => rt.ExpiryDate)
+                                                .FirstOrDefault();
+
+            if (refreshTokenUser != null && refreshTokenUser.KorisnickiRacunID == korisnickiRacun.KorisnickiRacunId
+                && refreshTokenUser.ExpiryDate > DateTime.UtcNow)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        private async Task<KorisnickiRacun> GetUserFromAccessToken(string accessToken)
+        {
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_jwtsettings.SecretKey);
+
+                var tokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+
+                SecurityToken securityToken;
+                var principle = tokenHandler.ValidateToken(accessToken, tokenValidationParameters, out securityToken);
+
+                JwtSecurityToken jwtSecurityToken = securityToken as JwtSecurityToken;
+
+                if (jwtSecurityToken != null && jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    var email = principle.FindFirst(ClaimTypes.Name)?.Value;
+
+                    return await _context.KorisnickiRacun.Where(u => u.Email == email).FirstOrDefaultAsync();
+                }
+            }
+            catch (Exception)
+            {
+                return new KorisnickiRacun();
+            }
+
+            return new KorisnickiRacun();
+        }
 
         // POST: api/Korisnik
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

@@ -10,6 +10,7 @@ namespace eLibrary.Models
         public Kupon()
         {
             Narudzba = new HashSet<Narudzba>();
+
         }
 
         public int KuponId { get; set; }

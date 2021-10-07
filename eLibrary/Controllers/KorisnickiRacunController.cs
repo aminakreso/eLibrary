@@ -34,7 +34,6 @@ namespace eLibrary.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<KorisnickiRacun>> GetKorisnickiRacun(int id)
         {
-
             var korisnickiRacun = await _context.KorisnickiRacun
                                            .Include(korisnickiRacun => korisnickiRacun.Korisnik)
                                            .Include(korisnickiRacun => korisnickiRacun.Admin)

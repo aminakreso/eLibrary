@@ -9,6 +9,7 @@ namespace eLibrary.Models
     {
         public int ClanskaKarticaId { get; set; }
         public int? KorisnikId { get; set; }
+        public string Password { get; set; }
         public DateTime? DatumKreiranja { get; set; }
         public byte? Aktivna { get; set; }
 
