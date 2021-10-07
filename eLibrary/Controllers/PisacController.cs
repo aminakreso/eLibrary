@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eLibrary.Models;
 using eLibrary.ActionFilters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eLibrary.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PisacController : ControllerBase

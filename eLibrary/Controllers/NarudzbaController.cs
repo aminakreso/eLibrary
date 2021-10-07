@@ -34,11 +34,6 @@ namespace eLibrary.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Narudzba>> GetNarudzba(int id)
         {
-            //var korisnickiRacun = await _context.KorisnickiRacun
-            //                               .Include(korisnickiRacun => korisnickiRacun.Korisnik)
-            //                               .Include(korisnickiRacun => korisnickiRacun.Admin)
-            //                               .Where(korisnickiRacun => korisnickiRacun.KorisnickiRacunId == id)
-            //                               .FirstOrDefaultAsync();
 
             var narudzba = await _context.Narudzba
                                            .Include(narudzba => narudzba.Korisnik)
