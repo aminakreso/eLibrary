@@ -34,11 +34,12 @@
             </thead>
             <tbody>
                 <tr *ngFor="let pd of service.list|searchfilterNarudzba:searchValueNarudzba">
-                    <td (click)="populateForm(pd)">{{pd.nazivUloge}}</td>
-                    <td (click)="populateForm(pd)">{{pd.email}}</td>
-                    <td (click)="populateForm(pd)">{{pd.password}}</td>
-                    <td><button class="btn btn-info" (click)="password()">{{show ? 'Show' : 'Hide'}}</button></td>
-                  
+                    <td (click)="populateForm(pd)">{{pd.narudzbaId}}</td>
+                    <td (click)="populateForm(pd)">{{pd.korisnikId}}</td>
+                    <td (click)="populateForm(pd)">{{pd.cijena}}</td>
+                    <td (click)="populateForm(pd)">{{pd.datumVrijeme | date: 'dd/MM/yyyy'}}</td>
+                    <td (click)="populateForm(pd)">{{pd.knjigaId}}</td>
+                 
                     <td>
                         <button class="btn btn-danger" (click)="onDelete(pd.korisnickiracunId)">X</button>
                     </td>

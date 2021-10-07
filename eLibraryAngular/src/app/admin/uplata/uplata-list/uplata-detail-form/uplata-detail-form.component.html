@@ -10,7 +10,7 @@
       </select>
     </div>
     <div class="form-group">
-        <label>Datum: </label>
+        <label>Datum uplate: </label>
         <input type="date" class="form-control form-control-lg" placeholder="Datum" name="datum"
             #datum="ngModel" [(ngModel)]="service.formData.datum"
             required [class.invalid]="datum.invalid && datum.touched">
