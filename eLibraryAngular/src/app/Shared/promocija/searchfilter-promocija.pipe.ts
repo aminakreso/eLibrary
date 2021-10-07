@@ -17,8 +17,7 @@ export class SearchfilterPromocijaPipe implements PipeTransform {
     else
     {
     return item.filter(items=>
-      items.naziv.toLocaleLowerCase().includes(searchValuePromocija.toLocaleLowerCase())||
-      items.vrstaPromocije.toLocaleLowerCase().includes(searchValuePromocija.toLocaleLowerCase()));
+      items.naziv.toLocaleLowerCase().includes(searchValuePromocija.toLocaleLowerCase())) ;
     }
   }
 }
