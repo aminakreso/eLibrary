@@ -2,9 +2,12 @@
     <input type="hidden" name="korisnickiracunId" [value]="service.formData.korisnickiracunId" />
     <div class="form-group">
         <label>Uloga: </label>
-        <input class="form-control form-control-lg" placeholder="Naziv uloge" name="nazivUloge"
-            #nazivUloge="ngModel" [(ngModel)]="service.formData.nazivUloge"
-            required [class.invalid]="nazivUloge.invalid && nazivUloge.touched">
+        <select class="form-control form-control-lg" 
+        [(ngModel)]="service.formData.nazivUloge" name="nazivUloge" required="true">
+        <option value>--Odaberi korisnički račun--</option> 
+        <option value="1">Admin</option>
+        <option value="2">Korisnik</option>
+      </select>
     </div>
     <div class="form-group">
         <label>Email: </label>
