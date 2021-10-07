@@ -8,40 +8,42 @@
       
   
 <div class="jumbotron py-3">
-    <h1 >Prikaz promocija</h1>
+    <h1 >Prikaz korisničkih računa</h1>
 </div>
 
 <div class="row">
     <div class="col-md-4">
         <br>
-        <app-promocija-detail-form></app-promocija-detail-form>
+        <app-korisnickiracun-detail-form></app-korisnickiracun-detail-form>
         
     </div>
     <div class="col-md-8">
         <div class="form-group row">
             <label for="search" class="col-sm-2 col-form-label" style="text-align: right;">Pretraga:</label>
             <div class="col-sm-10">
-                <input type="text" [(ngModel)]="searchValuePromocija" class="form-control" id="searchfilterPromocija">
+                <input type="text" [(ngModel)]="searchValueKorisnickiRacun" class="form-control" id="searchfilterKorisnickiRacun">
             </div>
         </div>
         <br>
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th>Naziv promocije:</th>
-                    <th>Vrsta:</th>
-                    <th>Popust (%):</th>
-               
+                    <th>Uloga:</th>
+                    <th>Email:</th>
+                    <th>Password:</th>
+                    <th>Prikaži password:</th>
                     <th>Obriši</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let pd of service.list|searchfilterPromocija:searchValuePromocija">
-                    <td (click)="populateForm(pd)">{{pd.naziv}}</td>
-                    <td (click)="populateForm(pd)">{{pd.vrstaPromocije}}</td>
-                    <td (click)="populateForm(pd)">{{pd.popust}}</td>
+                <tr *ngFor="let pd of service.list|searchfilterKorisnickiRacun:searchValueKorisnickiRacun">
+                    <td (click)="populateForm(pd)">{{pd.nazivUloge}}</td>
+                    <td (click)="populateForm(pd)">{{pd.email}}</td>
+                    <td (click)="populateForm(pd)">{{pd.password}}</td>
+                    <td><button class="btn btn-info" (click)="password()">{{show ? 'Show' : 'Hide'}}</button></td>
+                  
                     <td>
-                        <button class="btn btn-danger" (click)="onDelete(pd.promocijaId)">X</button>
+                        <button class="btn btn-danger" (click)="onDelete(pd.korisnickiracunId)">X</button>
                     </td>
                 </tr>
             </tbody>

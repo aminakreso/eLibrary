@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PromocijaRoutingModule } from './promocija-routing.module';
+import { KorisnickiRacunRoutingModule } from './korisnickiracun-routing.module';
 
 
 
@@ -9,8 +9,8 @@ import { PromocijaRoutingModule } from './promocija-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    PromocijaRoutingModule
+    KorisnickiRacunRoutingModule
   ]
 })
-export class PromocijaModule {}
+export class KorisnickiRacunModule {}
  

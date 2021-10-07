@@ -8,10 +8,8 @@ import { Promocija } from './promocija.model';
   providedIn: 'root'
 })
 export class PromocijaService {
-
   
   constructor(private http: HttpClient) { }
-  
   
   readonly baseURL = 'https://localhost:44314/api/promocija';
   formData: Promocija = new Promocija();
@@ -34,11 +32,10 @@ export class PromocijaService {
       .toPromise()
       .then(res =>this.list = res as Promocija[]);
   }
-  
-  
   getAllPromocija():Observable<Promocija[]>{
     return this.http.get<Promocija[]>(this.baseURL);
   }
+
   
  
  

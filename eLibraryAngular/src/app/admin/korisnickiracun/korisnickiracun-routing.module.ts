@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import {PromocijaListComponent } from './promocija-list/promocija-list.component'; 
+import {KorisnickiRacunListComponent } from './korisnickiracun-list/korisnickiracun-list.component'; 
 
 const routes: Routes = [
   
   {
-    path: 'promocija-list',
-    component: PromocijaListComponent
+    path: 'korisnickiracun-list',
+    component: KorisnickiRacunListComponent
   },
 ];
 
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PromocijaRoutingModule { }
+export class KorisnickiRacunRoutingModule { }

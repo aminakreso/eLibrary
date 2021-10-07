@@ -26,8 +26,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
+
 import { ZanrService } from './Shared/zanr/zanr.service';
 import { ZanrListComponent } from './admin/zanr/zanr-list/zanr-list.component';
+
 import { ToastrModule } from 'ngx-toastr';
 import { ZanrDetailFormComponent } from './admin/zanr/zanr-list/zanr-detail-form/zanr-detail-form.component';
 import { UplataDetailFormComponent } from './admin/uplata/uplata-list/uplata-detail-form/uplata-detail-form.component';
@@ -44,7 +46,7 @@ import { PisacListComponent } from './admin/pisac/pisac-list/pisac-list.componen
 import { PisacDetailFormComponent } from './admin/pisac/pisac-list/pisac-detail-form/pisac-detail-form.component';
 import { SearchfilterPisacPipe } from './Shared/pisac/SearchFilter/searchfilterPisac.pipe';
 import { PromocijaService } from './Shared/promocija/promocija.service';
-import { SearchfilterPromocijaPipe } from './Shared/promocija/searchfilter-promocija.pipe';
+import { SearchfilterPromocijaPipe } from './Shared/promocija/Searchfilter/searchfilterPromocija.pipe';
 import { PromocijaListComponent } from './admin/promocija/promocija-list/promocija-list.component';
 import { PromocijaDetailFormComponent } from './admin/promocija/promocija-list/promocija-detail-form/promocija-detail-form.component';
 import { PisacService } from './Shared/pisac/pisac.service';
@@ -53,6 +55,14 @@ import { SearchfilterKorisnikPipe } from './Shared/korisnik/SearchFilter/searchf
 import { KorisnikService } from './Shared/korisnik/korisnik.service';
 import { KorisnikListComponent } from './admin/korisnik/korisnik-list/korisnik-list.component';
 import { KorisnikDetailFormComponent } from './admin/korisnik/korisnik-list/korisnik-detail-form/korisnik-detail-form.component';
+import { KorisnickiRacunListComponent } from './admin/korisnickiracun/korisnickiracun-list/korisnickiracun-list.component';
+import { KorisnickiRacunDetailFormComponent } from './admin/korisnickiracun/korisnickiracun-list/korisnickiracun-detail-form/korisnickiracun-detail-form.component';
+import { KorisnickiRacunService } from './Shared/korisnickiracun/korisnickiracun.service';
+import { SearchfilterKorisnickiRacunPipe } from './Shared/korisnickiracun/SearchFilter/searchfilterKorisnickiRacun.pipe';
+import { SearchfilterNarudzbaPipe } from './Shared/narudzba/SearchFilter/searchfilterNarudzba.pipe';
+import { NarudzbaListComponent } from './admin/narudzba/narudzba-list/narudzba-list.component';
+import {NarudzbaService} from './Shared/narudzba/narudzba.service';
+
 
 @NgModule({
   declarations: [
@@ -64,6 +74,8 @@ import { KorisnikDetailFormComponent } from './admin/korisnik/korisnik-list/kori
     SearchfilterZanrPipe,
     SearchfilterPromocijaPipe,
     SearchfilterKorisnikPipe,
+    SearchfilterKorisnickiRacunPipe,
+    SearchfilterNarudzbaPipe,
     HeaderComponent,
     HomeComponent,
     SidenavComponent,
@@ -73,7 +85,9 @@ import { KorisnikDetailFormComponent } from './admin/korisnik/korisnik-list/kori
     KnjigaListComponent,KnjigaDetailFormComponent,
     PisacListComponent,PisacDetailFormComponent,
     PromocijaListComponent, PromocijaDetailFormComponent,
-    KorisnikListComponent,KorisnikDetailFormComponent
+    KorisnikListComponent,KorisnikDetailFormComponent,
+    KorisnickiRacunListComponent, KorisnickiRacunDetailFormComponent,
+    NarudzbaListComponent
     
   ],
   imports: [
@@ -95,7 +109,7 @@ import { KorisnikDetailFormComponent } from './admin/korisnik/korisnik-list/kori
     
 
   ],
-  providers: [HttpClientModule, KnjigaService, PromocijaService, PisacService, ZanrService, UplataService, KorisnikService],
+  providers: [HttpClientModule, KnjigaService, PromocijaService, PisacService, ZanrService, UplataService, KorisnikService, KorisnickiRacunService, NarudzbaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,10 +16,10 @@
       </select>
     </div>
     <div class="form-group">
-        <label>Zanr: </label>
+        <label>Žanr: </label>
         <select class="form-control form-control-lg" 
         [(ngModel)]="service.formData.zanrId" name="zanrId" required="true">
-        <option value="0">--Odaberi zanr--</option> 
+        <option value="0">--Odaberi Žanr--</option> 
         <option *ngFor="let i of zanrovi" [ngValue]="i.zanrId" >{{i.naziv}}</option>
       </select>
     </div>
@@ -33,7 +33,7 @@
 
 
     <div class="form-group">
-        <label>Kolicina: </label>
+        <label>Količina: </label>
         <input class="form-control form-control-lg" placeholder="kolicina" name="kolicina"
             #kolicina="ngModel" [(ngModel)]="service.formData.kolicina"
             required [class.invalid]="kolicina.invalid && kolicina.touched">

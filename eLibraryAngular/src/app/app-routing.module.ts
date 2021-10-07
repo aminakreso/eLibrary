@@ -53,6 +53,14 @@ const routes: Routes = [
   {
     path: 'korisnik',
     loadChildren: () => import('./admin/korisnik/korisnik.module').then(m => m.KorisnikModule)
+  },
+  {
+    path: 'korisnickiracun',
+    loadChildren: () => import('./admin/korisnickiracun/korisnickiracun.module').then(m => m.KorisnickiRacunModule)
+  },
+  {
+    path: 'narudzba',
+    loadChildren: () => import('./admin/narudzba/narudzba.module').then(m => m.NarudzbaModule)
   }
   
 ];

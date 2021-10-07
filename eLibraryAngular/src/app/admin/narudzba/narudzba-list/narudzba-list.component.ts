@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
-import { PromocijaService } from 'src/app/Shared/promocija/promocija.service';
-import { Promocija } from 'src/app/Shared/promocija/promocija.model';
+import { NarudzbaService } from 'src/app/Shared/narudzba/narudzba.service';
+import { Narudzba } from 'src/app/Shared/narudzba/narudzba.model';
 
 @Component({
-  selector: 'app-promocija-list',
-  templateUrl: './promocija-list.component.html',
-  styleUrls: ['./promocija-list.component.scss']
+  selector: 'app-narudzba-list',
+  templateUrl: './narudzba-list.component.html',
+  styleUrls: ['./narudzba-list.component.scss']
 })
-export class PromocijaListComponent implements OnInit {
+export class NarudzbaListComponent implements OnInit {
 
-  searchValuePromocija: string='';
-  listPromocija!: Promocija[];
+  searchValueNarudzba: string='';
+  listNarudzba!: Narudzba[];
   show:boolean=false;
   
-  constructor(public service:PromocijaService,
+  constructor(public service:NarudzbaService,
   private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -23,13 +23,13 @@ export class PromocijaListComponent implements OnInit {
     this.service.refreshList();
   }
 
-  populateForm(selectedRecord: Promocija) {
+  populateForm(selectedRecord: Narudzba) {
     this.service.formData = Object.assign({}, selectedRecord);
   }
 
   onDelete(id: number) {
-    if (confirm('Da li ste sigurni da zelite obrisati promociju?')) {
-      this.service.deletePromocijaDetail(id)
+    if (confirm('Da li ste sigurni da zelite obrisati narudžbu?')) {
+      this.service.deleteNarudzbaDetail(id)
         .subscribe(
           res => {
             this.service.refreshList();
