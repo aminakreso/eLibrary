@@ -13,6 +13,7 @@ export class KorisnickiRacunListComponent implements OnInit {
 
   searchValueKorisnickiRacun: string='';
   listKorisnickiRacun!: KorisnickiRacun[];
+  show:boolean=false;
   
   constructor(public service:KorisnickiRacunService,
   private toastr: ToastrService) { }
@@ -39,7 +40,9 @@ export class KorisnickiRacunListComponent implements OnInit {
     }
   }
 
-
+  password() {
+    this.show = !this.show;
+}
 
   sideBarOpen = true;
 

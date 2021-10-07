@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace eLibrary.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PisacController : ControllerBase

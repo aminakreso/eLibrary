@@ -31,7 +31,7 @@
                     <th>Uloga:</th>
                     <th>Email:</th>
                     <th>Password:</th>
-                    
+                    <th>Prikaži password:</th>
                     <th>Obriši</th>
                 </tr>
             </thead>
@@ -40,7 +40,8 @@
                     <td (click)="populateForm(pd)">{{pd.nazivUloge}}</td>
                     <td (click)="populateForm(pd)">{{pd.email}}</td>
                     <td (click)="populateForm(pd)">{{pd.password}}</td>
-                    
+                    <td><button class="btn btn-info" (click)="password()">{{show ? 'Show' : 'Hide'}}</button></td>
+                  
                     <td>
                         <button class="btn btn-danger" (click)="onDelete(pd.korisnickiracunId)">X</button>
                     </td>
