@@ -1,13 +1,10 @@
-
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
-import { Promocija } from 'src/app/Shared/promocija/promocija.model';
+import { Promocija} from 'src/app/Shared/promocija/promocija.model';
 import { PromocijaService } from 'src/app/Shared/promocija/promocija.service';
-
 
 
 @Component({
@@ -18,15 +15,11 @@ import { PromocijaService } from 'src/app/Shared/promocija/promocija.service';
 })
 export class PromocijaDetailFormComponent implements OnInit {
 
-  constructor(private http:HttpClient,public service: PromocijaService,
+  constructor(public service: PromocijaService,
     private toastr: ToastrService) { }
 
-  
-    
   ngOnInit(): void {
-    
   }
-  
 
   onSubmit(form: NgForm) {
     if (this.service.formData.promocijaId == 0)
@@ -56,6 +49,7 @@ export class PromocijaDetailFormComponent implements OnInit {
       err => { console.log(err); }
     );
   }
+
 
   resetForm(form: NgForm) {
     form.form.reset();

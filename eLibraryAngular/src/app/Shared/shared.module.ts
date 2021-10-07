@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SearchfilterUplataPipe } from './uplata/searchfilter-uplata.pipe';
 import { SearchfilterKnjigaPipe } from './knjiga/searchfilter-knjiga.pipe';
-import { SearchfilterPromocijaPipe } from './promocija/searchfilter-promocija.pipe';
+import { SearchfilterPromocijaPipe } from './promocija/SearchFilter/searchfilterPromocija.pipe';
 import { SearchfilterClanskakartaPipe } from './clanskakarta/searchfilter-clanskakarta.pipe';
 import { SearchfilterPisacPipe } from './pisac/SearchFilter/searchfilterPisac.pipe';
 import { SearchfilterZanrPipe } from './zanr/SearchFilter/searchfilterZanr.pipe';

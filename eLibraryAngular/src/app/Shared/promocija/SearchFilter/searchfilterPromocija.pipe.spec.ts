@@ -1,4 +1,4 @@
-import { SearchfilterPromocijaPipe } from './searchfilter-promocija.pipe';
+import { SearchfilterPromocijaPipe } from './searchfilterPromocija.pipe';
 
 describe('SearchfilterPromocijaPipe', () => {
   it('create an instance', () => {
@@ -6,4 +6,3 @@ describe('SearchfilterPromocijaPipe', () => {
     expect(pipe).toBeTruthy();
   });
 });
-

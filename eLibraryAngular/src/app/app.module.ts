@@ -46,7 +46,7 @@ import { PisacListComponent } from './admin/pisac/pisac-list/pisac-list.componen
 import { PisacDetailFormComponent } from './admin/pisac/pisac-list/pisac-detail-form/pisac-detail-form.component';
 import { SearchfilterPisacPipe } from './Shared/pisac/SearchFilter/searchfilterPisac.pipe';
 import { PromocijaService } from './Shared/promocija/promocija.service';
-import { SearchfilterPromocijaPipe } from './Shared/promocija/searchfilter-promocija.pipe';
+import { SearchfilterPromocijaPipe } from './Shared/promocija/Searchfilter/searchfilterPromocija.pipe';
 import { PromocijaListComponent } from './admin/promocija/promocija-list/promocija-list.component';
 import { PromocijaDetailFormComponent } from './admin/promocija/promocija-list/promocija-detail-form/promocija-detail-form.component';
 import { PisacService } from './Shared/pisac/pisac.service';
@@ -61,7 +61,7 @@ import { KorisnickiRacunService } from './Shared/korisnickiracun/korisnickiracun
 import { SearchfilterKorisnickiRacunPipe } from './Shared/korisnickiracun/SearchFilter/searchfilterKorisnickiRacun.pipe';
 import { SearchfilterNarudzbaPipe } from './Shared/narudzba/SearchFilter/searchfilterNarudzba.pipe';
 import { NarudzbaListComponent } from './admin/narudzba/narudzba-list/narudzba-list.component';
-import{NarudzbaService} from './Shared/narudzba/narudzba.service';
+import {NarudzbaService} from './Shared/narudzba/narudzba.service';
 
 
 @NgModule({

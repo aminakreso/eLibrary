@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
-
-import { Promocija } from 'src/app/Shared/promocija/promocija.model';
 import { PromocijaService } from 'src/app/Shared/promocija/promocija.service';
-
-
+import { Promocija } from 'src/app/Shared/promocija/promocija.model';
 
 @Component({
   selector: 'app-promocija-list',
@@ -15,16 +12,15 @@ import { PromocijaService } from 'src/app/Shared/promocija/promocija.service';
 export class PromocijaListComponent implements OnInit {
 
   searchValuePromocija: string='';
-  
-  
   listPromocija!: Promocija[];
+  show:boolean=false;
+  
   constructor(public service:PromocijaService,
-    private toastr: ToastrService) { }
+  private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    
+
     this.service.refreshList();
-    
   }
 
   populateForm(selectedRecord: Promocija) {
@@ -44,7 +40,9 @@ export class PromocijaListComponent implements OnInit {
     }
   }
 
-
+  password() {
+    this.show = !this.show;
+}
 
   sideBarOpen = true;
 

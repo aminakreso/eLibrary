@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PromocijaListComponent } from './promocija-list/promocija-list.component'; 
+import {PromocijaListComponent } from './promocija-list/promocija-list.component'; 
 
 const routes: Routes = [
   
