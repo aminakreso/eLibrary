@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eLibrary.Models;
 using eLibrary.ActionFilters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eLibrary.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class KorisnikController : ControllerBase
@@ -25,14 +27,38 @@ namespace eLibrary.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Korisnik>>> GetKorisnik()
         {
-            return await _context.Korisnik.ToListAsync();
+            return await _context.Korisnik
+                                  .Include(k=>k.KorisnickiRacun)
+                                  .ToListAsync();
         }
 
-        // GET: api/Korisnik/5
+        //GET: api/Korisnik/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Korisnik>> GetKorisnik(int id)
         {
-            var korisnik = await _context.Korisnik.FindAsync(id);
+            var korisnik = await _context.Korisnik
+                                          .Include(k => k.KorisnickiRacun)
+                                          .Where(k => k.KorisnikId == id)
+                                          .FirstOrDefaultAsync();
+
+
+            if (korisnik == null)
+            {
+                return NotFound();
+            }
+
+            return korisnik;
+        }
+
+        [HttpGet("GetKorisnikInfo")]
+        public async Task<ActionResult<Korisnik>> GetKorisnikInfo()
+        {
+            string emailAddres = HttpContext.User.Identity.Name;
+            var korisnik = await _context.Korisnik
+                              .Where(korisnik => korisnik.KorisnickiRacun.Email == emailAddres)
+                              .FirstOrDefaultAsync();
+
+            korisnik.KorisnickiRacun.Password = null;
 
             if (korisnik == null)
             {

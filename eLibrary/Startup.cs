@@ -1,5 +1,7 @@
 using eLibrary.ActionFilters;
+using eLibrary.Handlers;
 using eLibrary.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -48,6 +50,10 @@ namespace eLibrary
             services.AddMvc(option => option.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
             services.AddDbContext<qsd_eLibraryContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("eLibraryDB")));
 
@@ -71,6 +77,8 @@ namespace eLibrary
 
             app.UseRouting();
             app.UseCors(allowSpecificOrigins);
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
