@@ -8,40 +8,44 @@
       
   
 <div class="jumbotron py-3">
-    <h1 >Prikaz promocija</h1>
+    <h1 >Prikaz korisnika</h1>
 </div>
 
 <div class="row">
     <div class="col-md-4">
         <br>
-        <app-promocija-detail-form></app-promocija-detail-form>
+        <app-korisnik-detail-form></app-korisnik-detail-form>
         
     </div>
     <div class="col-md-8">
         <div class="form-group row">
             <label for="search" class="col-sm-2 col-form-label" style="text-align: right;">Pretraga:</label>
             <div class="col-sm-10">
-                <input type="text" [(ngModel)]="searchValuePromocija" class="form-control" id="searchfilterPromocija">
+                <input type="text" [(ngModel)]="searchValueKorisnik" class="form-control" id="searchfilterKorisnik">
             </div>
         </div>
         <br>
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th>Naziv:</th>
-                    <th>Vrsta:</th>
-                    <th>Popust:</th>
-                 
+                    <th>Ime:</th>
+                    <th>Prezime:</th>
+                    <th>Broj telefona:</th>
+                    <th>Korisnicki racun:</th>
+                    
                     <th>Obriši</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let pd of service.list|searchfilterPromocija:searchValuePromocija">
-                    <td (click)="populateForm(pd)">{{pd.naziv}}</td>
-                    <td (click)="populateForm(pd)">{{pd.vrstaPromocije}}</td>
-                    <td (click)="populateForm(pd)">{{pd.popust}}</td>
+                <tr *ngFor="let pd of service.list|searchfilterKorisnik:searchValueKorisnik">
+                    <td (click)="populateForm(pd)">{{pd.ime}}</td>
+                    <td (click)="populateForm(pd)">{{pd.prezime}}</td>
+                    <td (click)="populateForm(pd)">{{pd.brojTelefona}}</td>
+                   
+                    <td (click)="populateForm(pd)">{{pd.korisnickiRacunId}}</td>
+                    
                     <td>
-                        <button class="btn btn-danger" (click)="onDelete(pd.promocijaId)">X</button>
+                        <button class="btn btn-danger" (click)="onDelete(pd.korisnikId)">X</button>
                     </td>
                 </tr>
             </tbody>

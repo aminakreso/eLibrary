@@ -9,7 +9,7 @@ import { Promocija } from './promocija.model';
 })
 export class PromocijaService {
 
-  url='https://localhost:44314/api/promocija'
+  
   constructor(private http: HttpClient) { }
   
   
@@ -37,7 +37,7 @@ export class PromocijaService {
   
   
   getAllPromocija():Observable<Promocija[]>{
-    return this.http.get<Promocija[]>(this.url);
+    return this.http.get<Promocija[]>(this.baseURL);
   }
   
  

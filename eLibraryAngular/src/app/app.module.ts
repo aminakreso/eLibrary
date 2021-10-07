@@ -47,6 +47,12 @@ import { PromocijaService } from './Shared/promocija/promocija.service';
 import { SearchfilterPromocijaPipe } from './Shared/promocija/searchfilter-promocija.pipe';
 import { PromocijaListComponent } from './admin/promocija/promocija-list/promocija-list.component';
 import { PromocijaDetailFormComponent } from './admin/promocija/promocija-list/promocija-detail-form/promocija-detail-form.component';
+import { PisacService } from './Shared/pisac/pisac.service';
+import { UplataService } from './Shared/uplata/uplata.service';
+import { SearchfilterKorisnikPipe } from './Shared/korisnik/SearchFilter/searchfilterKorisnik.pipe';
+import { KorisnikService } from './Shared/korisnik/korisnik.service';
+import { KorisnikListComponent } from './admin/korisnik/korisnik-list/korisnik-list.component';
+import { KorisnikDetailFormComponent } from './admin/korisnik/korisnik-list/korisnik-detail-form/korisnik-detail-form.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +63,7 @@ import { PromocijaDetailFormComponent } from './admin/promocija/promocija-list/p
     SearchfilterUplataPipe,
     SearchfilterZanrPipe,
     SearchfilterPromocijaPipe,
+    SearchfilterKorisnikPipe,
     HeaderComponent,
     HomeComponent,
     SidenavComponent,
@@ -65,7 +72,9 @@ import { PromocijaDetailFormComponent } from './admin/promocija/promocija-list/p
     UplataListComponent,UplataDetailFormComponent,
     KnjigaListComponent,KnjigaDetailFormComponent,
     PisacListComponent,PisacDetailFormComponent,
-    PromocijaListComponent, PromocijaDetailFormComponent
+    PromocijaListComponent, PromocijaDetailFormComponent,
+    KorisnikListComponent,KorisnikDetailFormComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -86,7 +95,7 @@ import { PromocijaDetailFormComponent } from './admin/promocija/promocija-list/p
     
 
   ],
-  providers: [HttpClientModule,KnjigaService, PromocijaService],
+  providers: [HttpClientModule, KnjigaService, PromocijaService, PisacService, ZanrService, UplataService, KorisnikService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SearchfilterUplataPipe } from './uplata/searchfilter-uplata.pipe';
 import { SearchfilterKnjigaPipe } from './knjiga/searchfilter-knjiga.pipe';
+import { SearchfilterPromocijaPipe } from './promocija/searchfilter-promocija.pipe';
+import { SearchfilterClanskakartaPipe } from './clanskakarta/searchfilter-clanskakarta.pipe';
+import { SearchfilterPisacPipe } from './pisac/SearchFilter/searchfilterPisac.pipe';
+import { SearchfilterZanrPipe } from './zanr/SearchFilter/searchfilterZanr.pipe';
+import { SearchfilterKorisnikPipe } from './korisnik/SearchFilter/searchfilterKorisnik.pipe';
 @NgModule({
   imports: [
     RouterModule,
@@ -16,7 +21,12 @@ import { SearchfilterKnjigaPipe } from './knjiga/searchfilter-knjiga.pipe';
   ],
   declarations: [
     SearchfilterUplataPipe,
-    SearchfilterKnjigaPipe
+    SearchfilterKnjigaPipe,
+    SearchfilterPromocijaPipe,
+    SearchfilterClanskakartaPipe,
+    SearchfilterPisacPipe,
+    SearchfilterZanrPipe, 
+    SearchfilterKorisnikPipe
   ],
 })
 export class SharedModule { }
